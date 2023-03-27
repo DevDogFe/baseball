@@ -100,13 +100,13 @@ footer {
 	</header>
 	<section>
 		<div></div>
-		<form action="/baseball/LoginProc">
+		<form action="/baseball/LoginProc" method="post">
 			<div class="form-group">
-				<label for="email">Email address:</label> <input type="email"
+				<label for="email">Email address</label> <input type="email"
 					class="form-control" placeholder="Enter email" id="email">
 			</div>
 			<div class="form-group">
-				<label for="pwd">Password:</label> <input type="password"
+				<label for="pwd">Password</label> <input type="password"
 					class="form-control" placeholder="Enter password" id="pwd">
 			</div>
 			<div class="form-group form-check">

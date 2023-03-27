@@ -26,15 +26,20 @@ public class JoinProc extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		response.sendRedirect("/baseball/login.jsp");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String email = request.getParameter("email");
+		String username = request.getParameter("username");
+		String pswd = request.getParameter("pswd");
+		String pswdCheck = request.getParameter("pswdCheck");
+		
+		
 		doGet(request, response);
 	}
 
