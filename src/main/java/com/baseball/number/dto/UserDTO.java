@@ -59,7 +59,7 @@ public class UserDTO {
 		this.username = username;
 	}
 
-	public class Builder {
+	public static class Builder {
 		private int userId;
 		private String email;
 		private String password;

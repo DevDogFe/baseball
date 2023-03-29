@@ -8,16 +8,16 @@
 
 <section>
 	<h1>회원가입</h1>
-	<form action="/action_page.php" class="was-validated" method="post">
+	<form action="JoinProc" class="was-validated" method="post">
 		<div class="form-group">
 			<label for="uname">Email address * (이메일은 아이디로 사용됩니다.)</label> <input type="text"
-				class="form-control" id="uname" placeholder="Enter email"
-				name="uname" required>
+				class="form-control" id="email" placeholder="Enter email"
+				name="email" required>
 			<div class="valid-feedback">Valid.</div>
 		</div>
 		<div class="form-group">
 			<label for="username">닉네임 *</label> <input type="username"
-				class="form-control" id="email" placeholder="Enter username"
+				class="form-control" id="username" placeholder="Enter username"
 				name="username" required>
 			<div class="valid-feedback">Valid.</div>
 		</div>
@@ -29,7 +29,7 @@
 		</div>
 		<div class="form-group">
 			<label for="pwdCheck">비밀번호확인 *</label> <input type="password"
-				class="form-control" id="pwdCheck" placeholder="Enter password again"
+				class="form-control" id="pswdCheck" placeholder="Enter password again"
 				name="pswdCheck" minlength="6" maxlength="12" required>
 			<div class="valid-feedback">Valid.</div>
 		</div>

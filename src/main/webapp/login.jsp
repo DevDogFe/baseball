@@ -116,7 +116,7 @@ footer {
 			</div>
 			<div class="button-box">
 			<button type="submit" class="btn btn-secondary">로그인</button>
-			<button type="submit" class="btn btn-secondary">회원가입</button>
+			<button type="button" class="btn btn-secondary" onclick="location.href='join.jsp'">회원가입</button>
 			</div>
 		</form>
 		<div></div>

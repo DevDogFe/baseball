@@ -8,7 +8,7 @@ public class DBHelper {
 	
 	private static final String DB_HOST = "localhost";
 	private static final String DB_PORT = "3306";
-	private static final String DB_DATABASE_NAME = "test";
+	private static final String DB_DATABASE_NAME = "baseball";
 	private static final String DB_CHARSET = "UTF-8";
 	private static final String DB_USER_NAME = "bloguser";
 	private static final String DB_PASSWORD = "1q2w3e4r5t";
