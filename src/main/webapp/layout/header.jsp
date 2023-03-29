@@ -98,11 +98,17 @@ footer {
 		<h1>숫 자 야 구</h1>
 		<nav>
 			<ul>
-				<li><a href="#">게임하기</a></li>
-				<li><a href="login.jsp">전체 랭킹 보기</a></li>
+				<li><a href="main.jsp">게임하기</a></li>
+				<li><a href="#">전체 랭킹 보기</a></li>
 			</ul>
 		</nav>
+		<%if(session.getAttribute("email") != null){%>
+		<div>
+			<div id="login" onclick="location.href='LogoutProc'">Logout</div>
+		</div>
+		<%} else {%>
 		<div>
 			<div id="login" onclick="location.href='login.jsp;'">Login</div>
 		</div>
+		<%} %>
 	</header>

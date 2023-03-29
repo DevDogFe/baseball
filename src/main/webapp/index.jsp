@@ -1,7 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%
+ 	int userId = 0;
+ 	String email = "";
+ 	String username = "";
+ 	String userRole = "";
+ 	if(session.getAttribute("userId") != null){
+	 	userId = (int)session.getAttribute("userId");
+	 	email = (String)session.getAttribute("email");
+	 	username = (String)session.getAttribute("username");
+	 	userRole = (String)session.getAttribute("userRole");
+ 	}
+ %>
     
 <jsp:include page="/layout/header.jsp"/>
+
+
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
@@ -25,7 +39,7 @@ article h1{
 	font-size: 30px;
 	padding: 15px;
 }
-p {
+article p {
 	font-size: 20px;
 	padding: 10px;	
 }
@@ -35,6 +49,10 @@ aside{
 	background-color: #ddd;
 	text-align: center;
 	padding: 20px;
+}
+
+#information-box{
+	margin-bottom: 30px;
 }
 </style>
 
@@ -49,7 +67,20 @@ aside{
 			<p>6.정해진 숫자와 위치를 모두 맞추면 3스트라이크가 되어 게임에서 승리한다.</p>
 		</article>
 		<aside>
-			<h1>👑주간 랭킹👑</h1>
+			<%if(username.equals("")){ %>
+			<div id="information-box">
+				<h4>게임을 시작하려면 로그인이 필요합니다.</h4>
+			</div>
+			<%} else{%>
+			<div id="information-box">
+				<h4><%=username%>님 환영합니다.</h4>
+				<p>포인트: 00</p>
+			</div>
+			<%}%>
+			<div>
+				<h1>👑주간 랭킹👑</h1>
+				
+			</div>
 		</aside>
 	</section>
 	

@@ -58,6 +58,17 @@ public class UserDTO {
 		this.password = password;
 		this.username = username;
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "UserDTO [userId=" + userId + ", email=" + email + ", password=" + password + ", username=" + username
+				+ ", userRole=" + userRole + ", joinDate=" + joinDate + ", weekPoint=" + weekPoint + ", monthPoint="
+				+ monthPoint + ", totalPoint=" + totalPoint + "]";
+	}
+
+
 
 	public static class Builder {
 		private int userId;

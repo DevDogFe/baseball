@@ -65,6 +65,7 @@ public class UserDAO implements IUserDAO{
 				String userRole = rs.getString("userRole");
 				
 				userDTO = new Builder().setUserId(userId).setEmail(userEmail).setUsername(username).setUserRole(userRole).build();
+				System.out.println(userDTO.toString());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -77,7 +78,7 @@ public class UserDAO implements IUserDAO{
 				e.printStackTrace();
 			}
 		}
-		return null;
+		return userDTO;
 	}
 
 	@Override

@@ -1,6 +1,11 @@
 package com.baseball.number.controller;
 
 import java.io.IOException;
+import java.nio.file.attribute.GroupPrincipal;
+import java.nio.file.attribute.UserPrincipal;
+import java.nio.file.attribute.UserPrincipalLookupService;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.baseball.number.dao.UserDAO;
 import com.baseball.number.dto.UserDTO;
+import com.baseball.number.service.UserService;
 
 /**
  * Servlet implementation class LoginProc
@@ -23,30 +29,39 @@ public class LoginProc extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		response.setCharacterEncoding("utf-8");
+//		response.setContentType("text/html");
+//		request.setCharacterEncoding("utf-8");
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+//		dispatcher.forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html");
 		String email = request.getParameter("email");
 		String pswd = request.getParameter("pswd");
-		UserDTO user = new UserDAO().login(email, pswd);
+		System.out.println(email + " " + pswd);
+		UserDTO user = new UserService().loginUserByEmailAndPassword(email, pswd);
+		System.out.println("Proc " + user.toString());
+		
 		
 		if(user != null) {
-			HttpSession userSession = request.getSession();
-			userSession.setAttribute("userId", user.getUserId());
-			userSession.setAttribute("email", user.getEmail());
-			userSession.setAttribute("username", user.getUsername());
-			userSession.setAttribute("userRole", user.getUserRole());
-			userSession.setAttribute("joinDate", user.getJoinDate());
+			HttpSession session = request.getSession();
+			session.setAttribute("userId", user.getUserId());
+			session.setAttribute("email", user.getEmail());
+			session.setAttribute("username", user.getUsername());
+			session.setAttribute("userRole", user.getUserRole());
+			
 			System.out.println("로그인성공");
 			response.sendRedirect("/baseball/index.jsp");
+			// doGet(request, response);
 		} else {
 			response.getWriter().write("<script> alert('로그인에 실패하였습니다.'); location.href='login.jsp' </script>");
 			System.out.println("로그인실패");
 		}
-		doGet(request, response);
 	}
 
 }

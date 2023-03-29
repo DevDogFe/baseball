@@ -103,11 +103,11 @@ footer {
 		<form action="/baseball/LoginProc" method="post">
 			<div class="form-group">
 				<label for="email">Email address</label> <input type="email"
-					class="form-control" placeholder="Enter email" id="email">
+					class="form-control" placeholder="Enter email" id="email" name="email">
 			</div>
 			<div class="form-group">
 				<label for="pwd">Password</label> <input type="password"
-					class="form-control" placeholder="Enter password" id="pwd">
+					class="form-control" placeholder="Enter password" id="pwd" name="pswd">
 			</div>
 			<div class="form-group form-check">
 				<label class="form-check-label"> <input

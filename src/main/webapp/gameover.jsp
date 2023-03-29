@@ -1,11 +1,6 @@
 <%@page import="com.baseball.number.utils.BaseballCalculater"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	if(session.getAttribute("email") == null){
-		out.print("<script></script>");
-	}
-%>
     
 <jsp:include page="/layout/header.jsp"/>
 <style>
@@ -46,19 +41,11 @@ aside{
 </style>
 
 	<section>
-			<h1>숫자야구 게임</h1>
+		<h1>숫자야구 게임</h1>
 	
 
-	<p>1 ~ 9의 숫자를 3개 입력해주세요</p>
-	<form action="MainProc" method="post">
-			<input type="number" name="guess1" required="required" min="1" max="9"> 
-			<input type="number" name="guess2" required="required" min="1" max="9"> 
-			<input type="number" name="guess3" required="required" min="1" max="9"> <input
-			type="submit" value="확인하기">
-	</form>
-	<form action="" id="answer1">
+		<p>게임에서 패배하였습니다. 다시 도전해보세요.</p>
 	
-	</form>
 	</section>
 	
 <jsp:include page="/layout/footer.jsp"/>
