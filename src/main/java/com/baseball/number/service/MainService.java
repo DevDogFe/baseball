@@ -10,13 +10,15 @@ public class MainService {
 		numberDAO = new NumberDAO();
 	}
 	
-	public int insertNumbers(int userId) {
+	public int[] insertNumbers(int userId) {
 		int resultCount = numberDAO.insert(userId);
-		
-		return resultCount;
+		numberDAO.tryCountUp(userId);
+		int[] nums = numberDAO.select(userId);
+		return nums;
 	}
 	
 	public int[] selectNumbers(int userId) {
+		numberDAO.tryCountUp(userId);
 		int[] nums = numberDAO.select(userId);
 		
 		return nums;
@@ -26,6 +28,19 @@ public class MainService {
 		int resultCount = numberDAO.delete(userId);
 		
 		return resultCount;
+	}
+	
+	public static void main(String[] args) {
+		int [] nums = new MainService().selectNumbers(1);
+		System.out.println(nums);
+		for (int i : nums) {
+			System.out.println(i);
+		}
+		
+		if(nums == null) {
+			System.out.println("하이");
+		}
+		
 	}
 
 }

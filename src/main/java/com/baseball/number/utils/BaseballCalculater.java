@@ -15,7 +15,7 @@ public class BaseballCalculater {
 		return nums;
 	}
 
-	public int[] checkNumbers(int[] guesses) {
+	public int[] checkNumbers(int[] nums, int[] guesses) {
 		int strikeCount = 0;
 		int ballCount = 0;
 		if (nums == guesses) {
@@ -46,9 +46,9 @@ public class BaseballCalculater {
 		int[] g1 = { 1, 2, 3 };
 		int[] g2 = { 4, 5, 6 };
 		int[] g3 = { 7, 8, 9 };
-		int[] r1 = calculater.checkNumbers(g1);
-		int[] r2 = calculater.checkNumbers(g2);
-		int[] r3 = calculater.checkNumbers(g3);
+		int[] r1 = calculater.checkNumbers(nums, g1);
+		int[] r2 = calculater.checkNumbers(nums, g2);
+		int[] r3 = calculater.checkNumbers(nums, g3);
 		for (int i : r1) {
 			System.out.print(i + " ");
 		}

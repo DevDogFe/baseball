@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 <%
 	if(session.getAttribute("email") == null){
-		out.print("<script></script>");
+		out.print("<script>alert('로그인이 필요합니다.'); location.href='index.jsp'</script>");
 	}
 %>
     
@@ -53,12 +53,22 @@ aside{
 	<form action="MainProc" method="post">
 			<input type="number" name="guess1" required="required" min="1" max="9"> 
 			<input type="number" name="guess2" required="required" min="1" max="9"> 
-			<input type="number" name="guess3" required="required" min="1" max="9"> <input
-			type="submit" value="확인하기">
+			<input type="number" name="guess3" required="required" min="1" max="9"> 
+			<input type="submit" value="확인하기">
 	</form>
-	<form action="" id="answer1">
+	<%if(session.getAttribute("1") != null){
+		for(int i = 1; i < 9; i++){
+			if(session.getAttribute(i + "") == null) break;%>	
+			
+		<div>tryCount: <%=(int)session.getAttribute(i + "") %></div>
+		<div>결과: <%=(int)session.getAttribute("strike" + i) %>S <%=(int)session.getAttribute("ball" + i)%>B </div>
+		<div>입력한 숫자: <%=(int)session.getAttribute("guess1" + i) %> <%=(int)session.getAttribute("guess2" + i)%> <%=(int)session.getAttribute("guess3" + i)%> </div>
+		
+			
+		
+	<%}}%>
 	
-	</form>
+	
 	</section>
 	
 <jsp:include page="/layout/footer.jsp"/>

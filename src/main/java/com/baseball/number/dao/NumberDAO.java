@@ -21,9 +21,9 @@ public class NumberDAO implements INumberDAO {
 	}
 
 	@Override
-	public int insert(int userId) {
+	public int insert( int userId) {
 		int resultCount = 0;
-		String queryStr = " INSERT INTO numbers VALUES (?, ?, ?, ?) ";
+		String queryStr = " INSERT INTO numbers(userId, num1, num2, num3) VALUES (?, ?, ?, ?) ";
 		BaseballCalculater baseballCalculater = new BaseballCalculater();
 		int[] nums = baseballCalculater.getNumbers();
 		conn = dbHelper.getConnection();
@@ -52,7 +52,7 @@ public class NumberDAO implements INumberDAO {
 
 	@Override
 	public int[] select(int userId) {
-		int[] nums = new int[3];
+		int[] nums = new int[4];
 		conn = dbHelper.getConnection();
 		String sql = " SELECT * FROM numbers WHERE userId = ? ";
 		try {
@@ -63,6 +63,7 @@ public class NumberDAO implements INumberDAO {
 				nums[0] = rs.getInt("num1");
 				nums[1] = rs.getInt("num2");
 				nums[2] = rs.getInt("num3");
+				nums[3] = rs.getInt("tryCount");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -102,5 +103,30 @@ public class NumberDAO implements INumberDAO {
 		}
 		return resultCount;
 	}
+	
+	@Override
+	public int tryCountUp(int userId) {
+		int resultCount = 0;
+		String queryStr = " UPDATE numbers SET tryCount = tryCount + 1 WHERE userId = ? ";
+		conn = dbHelper.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(queryStr);
+			pstmt.setInt(1, userId);
+			resultCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				dbHelper.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return resultCount;
+	}
+	
 
 }
