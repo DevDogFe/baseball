@@ -96,7 +96,7 @@ footer {
 </head>
 <body>
 	<header>
-		<h1><a href="index.jsp">숫 자 야 구</a></h1>
+		<h1><a href="indexProc">숫 자 야 구</a></h1>
 		<nav>
 			<ul>
 				<li><a href="main.jsp">게임하기</a></li>

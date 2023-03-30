@@ -54,7 +54,10 @@ public class UserService {
 	
 	public UserDTO selectUsersPointByUserId(int userId) {
 		UserDTO userDTO = null;
+	System.out.println("111111111111111");
 		userDTO = pointDAO.select(userId);
+		System.out.println(userDTO.toString());
+		System.out.println("2222222222");
 		return userDTO;
 	}
 	
@@ -72,7 +75,7 @@ public class UserService {
 	}
 	
 	public static void main(String[] args) {
-		new UserService().selectUsersPointByUserId(3);
+		new UserService().selectUsersPointByUserId(1);
 	}
 
 }

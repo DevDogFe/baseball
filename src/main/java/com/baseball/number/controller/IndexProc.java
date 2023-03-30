@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.baseball.number.dto.UserDTO;
 import com.baseball.number.service.UserService;
 
-@WebServlet("/index")
+@WebServlet("/indexProc")
 public class IndexProc extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,15 +26,18 @@ public class IndexProc extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; utf-8");
 		HttpSession session = request.getSession();
+		if(session.getAttribute("userId") != null) {
+			UserDTO userDTO = new UserService().selectUsersPointByUserId((int)session.getAttribute("userId"));
+			request.setAttribute("userDTO", userDTO);
+		}
 		ArrayList<UserDTO> weekList = new UserService().selectAllUsersPoint("weekPoint");
-		UserDTO userDTO = new UserService().selectUsersPointByUserId((int)session.getAttribute("userId"));
-		request.setAttribute("userDTO", userDTO);
 		request.setAttribute("weekList", weekList);
+		
+		
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }

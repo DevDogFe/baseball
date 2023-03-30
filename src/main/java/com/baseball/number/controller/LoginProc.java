@@ -56,7 +56,7 @@ public class LoginProc extends HttpServlet {
 			session.setAttribute("userRole", user.getUserRole());
 			
 			System.out.println("로그인성공");
-			response.sendRedirect("/baseball/index.jsp");
+			response.sendRedirect("/baseball/indexProc");
 			// doGet(request, response);
 		} else {
 			response.getWriter().write("<script> alert('로그인에 실패하였습니다.'); location.href='login.jsp' </script>");

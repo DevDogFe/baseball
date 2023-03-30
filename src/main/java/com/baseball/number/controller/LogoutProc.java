@@ -26,7 +26,7 @@ public class LogoutProc extends HttpServlet {
 		new MainService().deleteNumbers((int)session.getAttribute("userId"));
 		session.invalidate();
 		
-		response.sendRedirect("index.jsp");
+		response.sendRedirect("indexProc");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

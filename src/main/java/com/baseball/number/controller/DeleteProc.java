@@ -24,6 +24,7 @@ public class DeleteProc extends HttpServlet {
 		response.setContentType("text/html");
 		HttpSession session = request.getSession();
 		new UserService().deleteUser((int)session.getAttribute("userId"));
+		response.sendRedirect("indexProc");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

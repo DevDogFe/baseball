@@ -40,7 +40,7 @@ public class UpdateProc extends HttpServlet {
 			int resultRowCount = new UserService().updateUserInfo(userDTO, (int)session.getAttribute("userId"));
 			if(resultRowCount == 1) {
 				session.setAttribute("username", username);
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("indexProc");
 			} else {
 				response.getWriter().write("<script>alert('회원정보 수정에 실패하였습니다.'); location.href='join.jsp'</script>");
 			}
