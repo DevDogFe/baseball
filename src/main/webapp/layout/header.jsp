@@ -6,10 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-@import
-	url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&display=swap')
-	;
 
+	@import	url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+	
 * {
 	margin: 0;
 	padding: 0;
@@ -32,7 +32,7 @@ header {
 	color: #fff;
 }
 
-header h1 {
+header h1 a{
 	flex: 1;
 	font-family: 'Nanum Pen Script', cursive;
 	font-size: 40px;
@@ -81,6 +81,7 @@ a:hover {
 
 section {
 	flex: 10;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 footer {
@@ -95,11 +96,11 @@ footer {
 </head>
 <body>
 	<header>
-		<h1>숫 자 야 구</h1>
+		<h1><a href="index.jsp">숫 자 야 구</a></h1>
 		<nav>
 			<ul>
 				<li><a href="main.jsp">게임하기</a></li>
-				<li><a href="#">전체 랭킹 보기</a></li>
+				<li><a href="rank">전체 랭킹 보기</a></li>
 			</ul>
 		</nav>
 		<%if(session.getAttribute("email") != null){%>

@@ -6,60 +6,46 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.websocket.SendResult;
 
 import com.baseball.number.dto.UserDTO;
 import com.baseball.number.service.UserService;
-
-/**
- * Servlet implementation class JoinProc
- */
-@WebServlet("/JoinProc")
-public class JoinProc extends HttpServlet {
+import com.baseball.number.dto.UserDTO.Builder;
+@WebServlet("/updateProc")
+public class UpdateProc extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public JoinProc() {
+    public UpdateProc() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.sendRedirect("/baseball/login.jsp");
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html");
-		String email = request.getParameter("email");
 		String username = request.getParameter("username");
 		String pswd = request.getParameter("pswd");
 		String pswdCheck = request.getParameter("pswdCheck");
+		HttpSession session = request.getSession();
 		
 		if(pswd.equals(pswdCheck)) {
-			UserDTO userDTO = new UserDTO(email, pswd, username);
-			int resultRowCount = new UserService().joinUserByInformation(userDTO);
-			if(resultRowCount == 2) {
+			Builder builder = new Builder();
+			UserDTO userDTO = builder.setUsername(username).setPassword(pswd).build();
+			int resultRowCount = new UserService().updateUserInfo(userDTO, (int)session.getAttribute("userId"));
+			if(resultRowCount == 1) {
+				session.setAttribute("username", username);
 				response.sendRedirect("index.jsp");
 			} else {
-				response.getWriter().write("<script>alert('회원가입에 실패하였습니다.'); location.href='join.jsp'</script>");
+				response.getWriter().write("<script>alert('회원정보 수정에 실패하였습니다.'); location.href='join.jsp'</script>");
 			}
-			
 				
 		}
-		
-		
-		
 		
 	}
 

@@ -15,59 +15,94 @@
 section{
 	display: flex;
 	flex-direction: column;
+	padding: 40px;
 	
 }
-article {
-	flex: 5;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	padding: 20px;
-	font-family: 'Hi Melody', cursive;
-	font-weight: bold;
+
+section h1{
+	font-size: 30px;
 }
 
-article h1{
-	font-size: 30px;
-	padding: 15px;
-}
 p {
 	font-size: 20px;
 	padding: 10px;	
 }
 
-aside{
-	flex: 2;
-	background-color: #ddd;
-	text-align: center;
-	padding: 20px;
+input{
+	font-size: 20px;
+	padding: 5px;
+	margin-right: 10px;
 }
+
+input[type="submit"]{
+	font-size: 19px;
+	padding: 5px;
+	border: none;
+	background-color: #645;
+	color: #dfe;
+	border-radius: 5px;
+	
+}
+.form-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+form *{
+	margin-bottom: 20px;
+}
+
+.result-container{
+	display: flex;
+	margin-top: 20px;
+}
+label{
+	font-size: 15px;
+}
+textarea{
+	font-size: 15px;
+}
+
+.result-item{
+	
+	padding: 20px;
+	margin-right: 30px;
+	background-color: #edc;
+	border-radius: 10px;
+	font-size: 20px;
+}
+
+
 </style>
 
 	<section>
+		<div class="form-container">
 			<h1>숫자야구 게임</h1>
-	
-
-	<p>1 ~ 9의 숫자를 3개 입력해주세요</p>
-	<form action="MainProc" method="post">
-			<input type="number" name="guess1" required="required" min="1" max="9"> 
-			<input type="number" name="guess2" required="required" min="1" max="9"> 
-			<input type="number" name="guess3" required="required" min="1" max="9"> 
-			<input type="submit" value="확인하기">
-	</form>
-	<%if(session.getAttribute("1") != null){
-		for(int i = 1; i < 9; i++){
-			if(session.getAttribute(i + "") == null) break;%>	
-			
-		<div>tryCount: <%=(int)session.getAttribute(i + "") %></div>
-		<div>결과: <%=(int)session.getAttribute("strike" + i) %>S <%=(int)session.getAttribute("ball" + i)%>B </div>
-		<div>입력한 숫자: <%=(int)session.getAttribute("guess1" + i) %> <%=(int)session.getAttribute("guess2" + i)%> <%=(int)session.getAttribute("guess3" + i)%> </div>
+			<p>1 ~ 9의 숫자를 3개 입력해주세요</p>
+			<form action="MainProc" method="post">
+					<input type="number" name="guess1" required="required" min="1" max="9"> 
+					<input type="number" name="guess2" required="required" min="1" max="9"> 
+					<input type="number" name="guess3" required="required" min="1" max="9"> 
+					<input type="submit" value="확인하기"><br>
+					<label>메모장</label><br>
+					<textarea name="memo" rows="7" cols="50"></textarea>
+			</form>
+		</div>
+		<div class="result-container">
+		<%if(session.getAttribute("1") != null){
+			for(int i = 1; i < 9; i++){
+				if(session.getAttribute(i + "") == null) break;%>	
+			<div class="result-item">	
+				<div><%=(int)session.getAttribute(i + "") %>차시기</div>
+				<div>결과: <%=(int)session.getAttribute("strike" + i) %>S <%=(int)session.getAttribute("ball" + i)%>B </div>
+				<div>입력한 숫자: <%=(int)session.getAttribute("guess1" + i) %> <%=(int)session.getAttribute("guess2" + i)%> <%=(int)session.getAttribute("guess3" + i)%> </div>
+			</div>
+		<%}}%>
+		</div>
 		
-			
 		
-	<%}}%>
-	
 	
 	</section>
 	

@@ -8,7 +8,7 @@ public interface IPointDAO {
 	
 	int insert(int userId);
 	
-	ArrayList<UserDTO> select(); // 전체조회
+	ArrayList<UserDTO> select(String key); // 전체조회
 	
 	UserDTO select(int userId); // 유저 조회
 	

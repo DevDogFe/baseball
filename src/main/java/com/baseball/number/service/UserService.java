@@ -1,5 +1,7 @@
 package com.baseball.number.service;
 
+import java.util.ArrayList;
+
 import com.baseball.number.dao.PointDAO;
 import com.baseball.number.dao.UserDAO;
 import com.baseball.number.dto.UserDTO;
@@ -16,8 +18,12 @@ public class UserService {
 
 	public int joinUserByInformation(UserDTO userDTO) {
 		int resultCount = 0;
-		if (userDTO != null)
+		if (userDTO != null) {
 			resultCount = userDAO.joinUser(userDTO);
+			int userId = userDAO.searchIdByEmail(userDTO.getEmail());
+			resultCount += pointDAO.insert(userId);
+		}
+		
 		return resultCount;
 	}
 
@@ -36,6 +42,37 @@ public class UserService {
 		int resultCount = pointDAO.getPoint(userId, point);
 		
 		return resultCount;
+	}
+	
+	public ArrayList<UserDTO> selectAllUsersPoint(String key){
+		ArrayList<UserDTO> list = new ArrayList<>();
+		
+		list = pointDAO.select(key);
+		
+		return list;
+	}
+	
+	public UserDTO selectUsersPointByUserId(int userId) {
+		UserDTO userDTO = null;
+		userDTO = pointDAO.select(userId);
+		return userDTO;
+	}
+	
+	public int updateUserInfo(UserDTO userDTO, int userId) {
+		int resultCount = userDAO.update(userDTO, userId);
+		
+		return resultCount;
+		
+	}
+	
+	public int deleteUser(int userId) {
+		int resultCount = userDAO.delete(userId);
+		
+		return resultCount;
+	}
+	
+	public static void main(String[] args) {
+		new UserService().selectUsersPointByUserId(3);
 	}
 
 }

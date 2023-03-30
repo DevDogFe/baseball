@@ -45,11 +45,10 @@ public class PointDAO implements IPointDAO {
 	}
 
 	@Override
-	public ArrayList<UserDTO> select() {
+	public ArrayList<UserDTO> select(String key) {
 		ArrayList<UserDTO> list = new ArrayList<>();
 		conn = dbHelper.getConnection();
-		String sql = " SELECT p.userId, u.username, p.weekPoint, p.monthPoint, p. totalPoint FROM usersPoint AS p "
-				+ " LEFT JOIN users AS u ON p.userId = u.id ";
+		String sql = " SELECT p.userId, u.username, p.weekPoint, p.monthPoint, p.totalPoint FROM usersPoint AS p LEFT JOIN users AS u ON p.userId = u.id ORDER BY " + key + " DESC LIMIT 20";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -59,7 +58,7 @@ public class PointDAO implements IPointDAO {
 				int monthPoint = rs.getInt("monthPoint");
 				int totalPoint = rs.getInt("totalPoint");
 				
-				UserDTO userDTO = new Builder().setUsername(username).setWeekPoint(weakPoint).setMonthPoint(monthPoint).setTotalPoint(monthPoint).build();
+				UserDTO userDTO = new Builder().setUsername(username).setWeekPoint(weakPoint).setMonthPoint(monthPoint).setTotalPoint(totalPoint).build();
 				list.add(userDTO);
 			}
 		} catch (SQLException e) {
@@ -87,12 +86,11 @@ public class PointDAO implements IPointDAO {
 			pstmt.setInt(1, userId);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				String username = rs.getString("username");
 				int weakPoint = rs.getInt("weekPoint");
 				int monthPoint = rs.getInt("monthPoint");
 				int totalPoint = rs.getInt("totalPoint");
 				
-				userDTO = new Builder().setUsername(username).setWeekPoint(weakPoint).setMonthPoint(monthPoint).setTotalPoint(monthPoint).build();
+				userDTO = new Builder().setUserId(userId).setWeekPoint(weakPoint).setMonthPoint(monthPoint).setTotalPoint(monthPoint).build();
 				System.out.println(userDTO.toString());
 			}
 		} catch (SQLException e) {
@@ -189,11 +187,17 @@ public class PointDAO implements IPointDAO {
 	}
 	
 	public static void main(String[] args) {
-		int a = new PointDAO().getPoint(1, 10);
-		System.out.println(a);
+		ArrayList<UserDTO> list = new PointDAO().select("p.weekPoint");
 		
-		int b = new PointDAO().updateMonthPoint();
+		for (UserDTO userDTO : list) {
+			System.out.println(userDTO.toString());
+		}
+		
+		
+		
 		
 	}
-
+	
 }
+
+

@@ -9,9 +9,11 @@ public interface IUserDAO {
 	//로그인
 	UserDTO login(String email, String password);
 	//회원정보 수정
-	int update(UserDTO userDTO);
+	int update(UserDTO userDTO, int userId);
 	//회원 탈퇴
-	int delete(UserDTO userDTO);
+	int delete(int userId);
+	
+	int searchIdByEmail(String email);
 	
 	
 }

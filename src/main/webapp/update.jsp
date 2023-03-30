@@ -26,14 +26,8 @@ form {
 </style>
 
 <section>
-	<h1>회 원 가 입</h1>
-	<form action="JoinProc" class="was-validated" method="post">
-		<div class="form-group">
-			<label for="uname">Email address * (이메일은 아이디로 사용됩니다.)</label> <input type="text"
-				class="form-control" id="email" placeholder="Enter email"
-				name="email" required>
-			<div class="valid-feedback">Valid.</div>
-		</div>
+	<h1>회 원 정 보 수 정</h1>
+	<form action="updateProc" class="was-validated" method="post">
 		<div class="form-group">
 			<label for="username">닉네임 *</label> <input type="username"
 				class="form-control" id="username" placeholder="Enter username"
@@ -53,8 +47,9 @@ form {
 			<div class="valid-feedback">Valid.</div>
 		</div>
 		
-		<button type="submit" class="btn btn-primary">가입하기</button>
+		<button type="submit" class="btn btn-primary">수정하기</button>
 		<button type="reset" class="btn btn-primary">다시작성</button>
+		<button class="btn btn-primary" onclick="delete">회원탈퇴</button>
 	</form>
 </section>
 

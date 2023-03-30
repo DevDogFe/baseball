@@ -31,7 +31,6 @@ public class UserDAO implements IUserDAO{
 			pstmt.setString(1, userDTO.getEmail());
 			pstmt.setString(2, userDTO.getUsername());
 			pstmt.setString(3, userDTO.getPassword());
-			System.out.println(userDTO.getEmail() + " " + userDTO.getUsername() + " " + userDTO.getPassword());
 			resultCount = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -65,7 +64,6 @@ public class UserDAO implements IUserDAO{
 				String userRole = rs.getString("userRole");
 				
 				userDTO = new Builder().setUserId(userId).setEmail(userEmail).setUsername(username).setUserRole(userRole).build();
-				System.out.println(userDTO.toString());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -82,17 +80,81 @@ public class UserDAO implements IUserDAO{
 	}
 
 	@Override
-	public int update(UserDTO userDTO) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int delete(UserDTO userDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int update(UserDTO userDTO, int userId) {
+		int resultCount = 0;
+		String queryStr = " UPDATE users SET username = ?, password = ? WHERE id = ? ";
+		conn = dbHelper.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(queryStr);
+			pstmt.setString(1, userDTO.getUsername());
+			pstmt.setString(2, userDTO.getPassword());
+			pstmt.setInt(3, userId);
+			resultCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				dbHelper.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return resultCount;
 	}
 	
+	@Override
+	public int delete(int userId) {
+		int resultCount = 0;
+		String queryStr = " DELETE FROM users WHERE id = ?; ";
+		conn = dbHelper.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(queryStr);
+			pstmt.setInt(1, userId);
+			resultCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				dbHelper.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return resultCount;
+	}
+	
+	@Override
+	public int searchIdByEmail(String email) {
+		int userId = 0;
+		conn = dbHelper.getConnection();
+		String sql = " SELECT * FROM users "
+				+ " WHERE email = ? ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				userId = rs.getInt("id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				dbHelper.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return userId;
+	}
 	
 
 }

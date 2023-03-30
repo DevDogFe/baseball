@@ -8,29 +8,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.baseball.number.service.MainService;
+import com.baseball.number.service.UserService;
 
-/**
- * Servlet implementation class LogoutProc
- */
-@WebServlet("/LogoutProc")
-public class LogoutProc extends HttpServlet {
+@WebServlet("/delete")
+public class DeleteProc extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public LogoutProc() {
+    public DeleteProc() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html");
 		HttpSession session = request.getSession();
-		new MainService().deleteNumbers((int)session.getAttribute("userId"));
-		session.invalidate();
-		
-		response.sendRedirect("index.jsp");
+		new UserService().deleteUser((int)session.getAttribute("userId"));
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 	}
 
 }
