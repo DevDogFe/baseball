@@ -83,8 +83,7 @@ public class BoardDAO implements IBoardDAO{
 	public BoardDTO select(int boardId) {
 		BoardDTO BoardDTO = null;
 		conn = dbHelper.getConnection();
-		String sql = " SELECT * FROM users "
-				+ " WHERE email = ? AND password = ? ";
+		String sql = " SELECT * FROM board WHERE id = ? ";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, boardId);
@@ -93,7 +92,7 @@ public class BoardDAO implements IBoardDAO{
 				int id = rs.getInt("id");
 				String title = rs.getString("title");
 				String content = rs.getString("content");
-				String ceateTime = rs.getString("ceateTime");
+				String ceateTime = rs.getString("createTime");
 				int userId = rs.getInt("userId");
 				int views = rs.getInt("views");
 				BoardDTO = new BoardDTO(id, title, content, userId, ceateTime, views);
@@ -102,8 +101,8 @@ public class BoardDAO implements IBoardDAO{
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
-				pstmt.close();
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
 				dbHelper.closeConnection();
 			} catch (SQLException e) {
 				e.printStackTrace();

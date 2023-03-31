@@ -73,6 +73,10 @@ article h1{
 	flex: 2;
 }
 
+.title{
+	cursor: pointer;
+}
+
 aside{
 	flex: 2;
 	background-color: #ddd;
@@ -96,14 +100,14 @@ aside{
 			<div class=board-background>
 				<div class="board-container">
 					<div class="board-items item1">번호</div>
-					<div class="board-items item2" onclick="">제 목</div>
+					<div class="board-items item2">제 목</div>
 					<div class="board-items item3">조회수</div>
 					<div class="board-items item4">글쓴이</div>
 				</div>
 				<c:forEach var="board" items="${boardList}">
 				<div class="board-container">
 					<div class="board-items item1">${board.id}</div>
-					<div class="board-items item2">${board.title}</div>
+					<div class="board-items item2 title" onclick="location.href='readProc?boardId=${board.id}'">${board.title}</div>
 					<div class="board-items item3">${board.views}</div>
 					<div class="board-items item4">${board.userId}</div>
 				</div>
