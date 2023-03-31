@@ -25,6 +25,8 @@
 section{
 	display: flex;
 	flex-direction: column;
+	flex: 10;
+	font-family: 'Noto Sans KR', sans-serif;
 	
 }
 article {

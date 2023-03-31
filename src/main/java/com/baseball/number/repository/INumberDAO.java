@@ -1,4 +1,4 @@
-package com.baseball.number.dao;
+package com.baseball.number.repository;
 
 public interface INumberDAO {
 	int insert( int userId); // 숫자 저장

@@ -1,4 +1,4 @@
-package com.baseball.number.dao;
+package com.baseball.number.repository;
 
 import com.baseball.number.dto.UserDTO;
 

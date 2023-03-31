@@ -55,7 +55,7 @@ nav ul {
 
 a {
 	text-decoration: none;
-	font-size: 20px;
+	font-size: 35px;
 	color: #fff;
 }
 
@@ -95,7 +95,7 @@ footer {
 </head>
 <body>
 	<header>
-		<h1>숫 자 야 구</h1>
+		<h1><a href="indexProc">숫 자 야 구</a></h1>
 
 	</header>
 	<section>

@@ -2,9 +2,9 @@ package com.baseball.number.service;
 
 import java.util.ArrayList;
 
-import com.baseball.number.dao.PointDAO;
-import com.baseball.number.dao.UserDAO;
 import com.baseball.number.dto.UserDTO;
+import com.baseball.number.repository.PointDAO;
+import com.baseball.number.repository.UserDAO;
 
 public class UserService {
 
@@ -29,10 +29,8 @@ public class UserService {
 
 	public UserDTO loginUserByEmailAndPassword(String email, String password) {
 		UserDTO userDTO = null;
-		System.out.println(email + "/" + password);
 		if (email != null && password != null) {
 			userDTO = userDAO.login(email, password);
-			System.out.println("service: " + userDTO.toString());
 		}
 		return userDTO;
 	}
@@ -54,10 +52,7 @@ public class UserService {
 	
 	public UserDTO selectUsersPointByUserId(int userId) {
 		UserDTO userDTO = null;
-	System.out.println("111111111111111");
 		userDTO = pointDAO.select(userId);
-		System.out.println(userDTO.toString());
-		System.out.println("2222222222");
 		return userDTO;
 	}
 	
@@ -69,13 +64,11 @@ public class UserService {
 	}
 	
 	public int deleteUser(int userId) {
-		int resultCount = userDAO.delete(userId);
+		int resultCount = pointDAO.delete(userId);
+		resultCount += userDAO.delete(userId);
 		
 		return resultCount;
 	}
 	
-	public static void main(String[] args) {
-		new UserService().selectUsersPointByUserId(1);
-	}
-
+	
 }

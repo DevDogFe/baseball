@@ -1,6 +1,6 @@
 package com.baseball.number.service;
 
-import com.baseball.number.dao.NumberDAO;
+import com.baseball.number.repository.NumberDAO;
 
 public class MainService {
 	

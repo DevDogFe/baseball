@@ -13,6 +13,8 @@
 section{
 	padding: 60px;
 	font-family: 'Noto Sans KR', sans-serif;
+	flex: 10;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 form {
 	margin-top: 20px;
@@ -49,7 +51,7 @@ form {
 		
 		<button type="submit" class="btn btn-primary">수정하기</button>
 		<button type="reset" class="btn btn-primary">다시작성</button>
-		<button class="btn btn-primary" onclick="delete">회원탈퇴</button>
+		<button type="button" class="btn btn-primary" onclick="location.href='delete'">회원탈퇴</button>
 	</form>
 </section>
 

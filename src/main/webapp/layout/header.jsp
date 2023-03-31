@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <style type="text/css">
 
 	@import	url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&display=swap');
@@ -79,10 +81,7 @@ a:hover {
 	background-color: #b77c00;
 }
 
-section {
-	flex: 10;
-	font-family: 'Noto Sans KR', sans-serif;
-}
+
 
 footer {
 	flex: 1;

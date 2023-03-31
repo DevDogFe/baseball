@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
 
 <jsp:include page="/layout/header.jsp" />
 
@@ -12,6 +11,8 @@
 
 section{
 	padding: 60px;
+	font-family: 'Noto Sans KR', sans-serif;
+	flex: 10;
 	font-family: 'Noto Sans KR', sans-serif;
 }
 form {

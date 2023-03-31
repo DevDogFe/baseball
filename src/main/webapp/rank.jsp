@@ -1,3 +1,4 @@
+<%@page import="com.baseball.number.dto.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -12,6 +13,7 @@
 	 	username = (String)session.getAttribute("username");
 	 	userRole = (String)session.getAttribute("userRole");
  	}
+ 	UserDTO userDTO = (UserDTO)request.getAttribute("userDTO");
  %>
     
 <jsp:include page="/layout/header.jsp"/>
@@ -123,6 +125,29 @@ td, th{
 			</c:forEach>
 			</table>
 		</article>
+		<aside>
+		<%if(username.equals("")){ %>
+			<div id="information-box">
+				<h4>게임을 시작하려면 로그인이 필요합니다.</h4>
+			</div>
+			<%} else{%>
+			<div id="information-box">
+				<h4><%=username%>님 환영합니다. <button onclick="location.href='update.jsp'">정보수정</button></h4>
+				<p>주간 포인트: <%=userDTO.getWeekPoint() %></p>
+				<p>포인트: <%=userDTO.getTotalPoint() %></p>
+			</div>
+			<%}%>
+			<%if("admin".equals((String)session.getAttribute("userRole"))){ %>
+			<div>
+				<form action="rank?action=weekUpdate" method="post">
+					<input type="submit" value="주간 포인트 초기화">
+				</form>
+				<form action="rank?action=monthUpdate" method="post">
+					<input type="submit" value="월간 포인트 초기화">
+				</form>
+			</div>
+			<%}%>
+		</aside>
 		
 	</section>
 	

@@ -1,4 +1,4 @@
-package com.baseball.number.dao;
+package com.baseball.number.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -65,9 +65,9 @@ public class PointDAO implements IPointDAO {
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
-				pstmt.close();
-				conn.close();
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
 				dbHelper.closeConnection();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -90,7 +90,7 @@ public class PointDAO implements IPointDAO {
 				int monthPoint = rs.getInt("monthPoint");
 				int totalPoint = rs.getInt("totalPoint");
 				
-				userDTO = new Builder().setUserId(userId).setWeekPoint(weakPoint).setMonthPoint(monthPoint).setTotalPoint(monthPoint).build();
+				userDTO = new Builder().setUserId(userId).setWeekPoint(weakPoint).setMonthPoint(monthPoint).setTotalPoint(totalPoint).build();
 				System.out.println(userDTO.toString());
 			}
 		} catch (SQLException e) {
@@ -186,16 +186,28 @@ public class PointDAO implements IPointDAO {
 		return resultCount;
 	}
 	
-	public static void main(String[] args) {
-		ArrayList<UserDTO> list = new PointDAO().select("p.weekPoint");
-		
-		for (UserDTO userDTO : list) {
-			System.out.println(userDTO.toString());
+	@Override
+	public int delete(int userId) {
+		int resultCount = 0;
+		String queryStr = " DELETE FROM usersPoint WHERE userId = ? ";
+		conn = dbHelper.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(queryStr);
+			pstmt.setInt(1, userId);
+			resultCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				dbHelper.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		
-		
-		
-		
+		System.out.println(resultCount);
+		return resultCount;
 	}
 	
 }

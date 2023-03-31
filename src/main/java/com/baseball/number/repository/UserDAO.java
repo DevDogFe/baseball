@@ -1,4 +1,4 @@
-package com.baseball.number.dao;
+package com.baseball.number.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -108,7 +108,7 @@ public class UserDAO implements IUserDAO{
 	@Override
 	public int delete(int userId) {
 		int resultCount = 0;
-		String queryStr = " DELETE FROM users WHERE id = ?; ";
+		String queryStr = " DELETE FROM users WHERE id = ? ";
 		conn = dbHelper.getConnection();
 		PreparedStatement pstmt = null;
 		try {
@@ -125,7 +125,7 @@ public class UserDAO implements IUserDAO{
 				e.printStackTrace();
 			}
 		}
-		
+		System.out.println(resultCount);
 		return resultCount;
 	}
 	

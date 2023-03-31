@@ -1,4 +1,4 @@
-package com.baseball.number.dao;
+package com.baseball.number.repository;
 
 import java.util.ArrayList;
 
@@ -17,4 +17,6 @@ public interface IPointDAO {
 	int updateWeekpoint(); // 주간 점수 초기화
 	
 	int updateMonthPoint(); // 월간 점수 초기화
+	
+	int delete(int userId);
 }

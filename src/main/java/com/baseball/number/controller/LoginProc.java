@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.baseball.number.dao.UserDAO;
 import com.baseball.number.dto.UserDTO;
+import com.baseball.number.repository.UserDAO;
 import com.baseball.number.service.UserService;
 
 /**
@@ -43,9 +43,7 @@ public class LoginProc extends HttpServlet {
 		response.setContentType("text/html");
 		String email = request.getParameter("email");
 		String pswd = request.getParameter("pswd");
-		System.out.println(email + " " + pswd);
 		UserDTO user = new UserService().loginUserByEmailAndPassword(email, pswd);
-		System.out.println("Proc " + user.toString());
 		
 		
 		if(user != null) {

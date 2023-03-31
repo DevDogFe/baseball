@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	if(session.getAttribute("email") == null){
+	if(session.getAttribute("userId") == null){
 		out.print("<script>alert('로그인이 필요합니다.'); location.href='index.jsp'</script>");
 	}
 %>
@@ -16,6 +16,8 @@ section{
 	display: flex;
 	flex-direction: column;
 	padding: 40px;
+	flex: 10;
+	font-family: 'Noto Sans KR', sans-serif;
 	
 }
 

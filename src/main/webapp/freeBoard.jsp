@@ -23,17 +23,19 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
 
+
 section{
 	display: flex;
 	flex: 10;
 	font-family: 'Noto Sans KR', sans-serif;
+	
 }
 article {
 	flex: 5;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	padding: 20px;
 	font-family: 'Hi Melody', cursive;
 	font-weight: bold;
@@ -43,9 +45,32 @@ article h1{
 	font-size: 30px;
 	padding: 15px;
 }
-article p {
-	font-size: 20px;
-	padding: 10px;	
+
+.board-container{
+	display: flex; 
+	width: 1000px;
+	
+}
+
+.board-items{
+	background-color: #345;
+	text-align: center;
+	padding: 5px;
+	border-radius: 5px;
+	margin: 3px;
+	color: #def;
+}
+.item1{
+	flex: 1;
+}
+.item2{
+	flex: 10;
+}
+.item3{
+	flex: 1;
+}
+.item4{
+	flex: 2;
 }
 
 aside{
@@ -67,13 +92,28 @@ aside{
 
 	<section>
 		<article>
-			<h1>⚾ 숫자야구 규칙 ⚾</h1>
-			<p>1.숫자는 1부터 9까지 사용한다.</p>
-			<p>2.정해진 3개의 중복되지 않은 숫자를 맞추는 게임이다.</p>
-			<p>3.숫자를 3개씩 제시하여 값을 받아 판단한다.</p>
-			<p>4.숫자는 맞지만 위치가 틀렸을 때는 볼(B)로 표시된다.</p>
-			<p>5.숫자와 위치가 전부 맞으면 스트라이크로 표시된다.</p>
-			<p>6.정해진 숫자와 위치를 모두 맞추면 3스트라이크가 되어 게임에서 승리한다.</p>
+			<h1>📌게시판📌</h1>
+			<div class=board-background>
+				<div class="board-container">
+					<div class="board-items item1">번호</div>
+					<div class="board-items item2" onclick="">제 목</div>
+					<div class="board-items item3">조회수</div>
+					<div class="board-items item4">글쓴이</div>
+				</div>
+				<c:forEach var="board" items="${boardList}">
+				<div class="board-container">
+					<div class="board-items item1">${board.id}</div>
+					<div class="board-items item2">${board.title}</div>
+					<div class="board-items item3">${board.views}</div>
+					<div class="board-items item4">${board.userId}</div>
+				</div>
+				</c:forEach>
+			</div>
+			<div>
+				<a href="writingBoard.jsp">글쓰기</a>
+				<button>이전 글</button>
+				<button>다음 글</button>
+			</div>
 		</article>
 		<aside>
 			<%if(username.equals("")){ %>
@@ -87,25 +127,6 @@ aside{
 				<p>포인트: <%=userDTO.getTotalPoint() %></p>
 			</div>
 			<%}%>
-			<div>
-				<h1>👑주간 순위👑</h1>
-				<table>
-				<tr>
-					<th>순위</th>
-					<th>이름</th>
-					<th>포인트</th>
-				</tr>
-				<c:set var="countWeek" value="1"></c:set>
-				<c:forEach var="weekPoint" items="${weekList}" end="10">
-				<tr>
-					<th><c:out value="${countWeek}"/></th>
-					<th>${weekPoint.username}</th>
-					<th>${weekPoint.weekPoint}</th>
-				</tr>
-				<c:set var="countWeek" value="${countWeek +1}"/>
-				</c:forEach>
-				</table>
-			</div>
 		</aside>
 	</section>
 	
