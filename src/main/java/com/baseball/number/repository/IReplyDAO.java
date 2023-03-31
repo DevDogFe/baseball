@@ -13,6 +13,6 @@ public interface IReplyDAO {
 	// 삭제
 	int delete(int replyId);
 	// 수정
-	int update(ReplyDTO replyDTO, int replyId);
+	int update(String content, int replyId);
 	
 }
