@@ -32,6 +32,9 @@ public class ReadProc extends HttpServlet {
 		response.setContentType("text/html; utf-8");
 		int boardId = Integer.parseInt(request.getParameter("boardId"));
 		HttpSession session = request.getSession();
+		if(session.getAttribute("userId") == null) {
+			response.getWriter().write("<script>alert('로그인이 필요합니다.'); location.href='boardProc'</script>");
+		}
 		int userId = (int)session.getAttribute("userId");
 		BoardDTO boardDTO = new BoardService().showBoardContent(boardId, userId);
 		ArrayList<ReplyDTO> replyList = new ReplyDAO().select(boardId);

@@ -17,6 +17,7 @@ public class ReplyService {
 		resultCount = replyDAO.insert(replyDTO);
 		return resultCount;
 	}
+
 	public ArrayList<ReplyDTO> showReplies(int boardId) {
 		ArrayList<ReplyDTO> list = new ArrayList<>();
 		list = replyDAO.select(boardId);
@@ -28,9 +29,16 @@ public class ReplyService {
 		resultCount = replyDAO.delete(replyId);
 		return resultCount;
 	}
+
 	public int updateReply(String content, int replyId) {
 		int resultCount = 0;
 		resultCount = replyDAO.update(content, replyId);
 		return resultCount;
+	}
+
+	public int replyCountByBoardId(int boardId) {
+		int replyCount = 0;
+		replyCount = replyDAO.replyCount(boardId);
+		return replyCount;
 	}
 }

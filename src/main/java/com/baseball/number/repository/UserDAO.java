@@ -125,7 +125,6 @@ public class UserDAO implements IUserDAO{
 				e.printStackTrace();
 			}
 		}
-		System.out.println(resultCount);
 		return resultCount;
 	}
 	
@@ -181,6 +180,58 @@ public class UserDAO implements IUserDAO{
 			}
 		}
 		return username;
+	}
+	
+	@Override
+	public int checkEmail(String email) {
+		int resultCount = 0;
+		conn = dbHelper.getConnection();
+		String sql = " select count(*) AS count FROM users WHERE email= ? ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				resultCount = rs.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				dbHelper.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return resultCount;
+	}
+	
+	@Override
+	public int checkUsername(String username) {
+		int resultCount = 0;
+		conn = dbHelper.getConnection();
+		String sql = " select count(*) AS count FROM users WHERE username= ? ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, username);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				resultCount = rs.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				dbHelper.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return resultCount;
 	}
 	
 

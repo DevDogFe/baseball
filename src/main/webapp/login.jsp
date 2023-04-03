@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+Cookie[] cookies = request.getCookies();
+String userEmail = "";
+if(cookies != null){
+	for(Cookie cookie : cookies) {
+		if(cookie.getName().equals("email")){
+			userEmail = cookie.getValue();
+			break;
+		}
+	}
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,7 +116,7 @@ footer {
 		<form action="/baseball/LoginProc" method="post">
 			<div class="form-group">
 				<label for="email">Email address</label> <input type="email"
-					class="form-control" placeholder="Enter email" id="email" name="email">
+					class="form-control" placeholder="Enter email" id="email" name="email" value="<%=userEmail%>">
 			</div>
 			<div class="form-group">
 				<label for="pwd">Password</label> <input type="password"
@@ -112,7 +124,7 @@ footer {
 			</div>
 			<div class="form-group form-check">
 				<label class="form-check-label"> <input
-					class="form-check-input" type="checkbox"> Remember me
+					class="form-check-input" type="checkbox" name="remember"> Remember me
 				</label>
 			</div>
 			<div class="button-box">

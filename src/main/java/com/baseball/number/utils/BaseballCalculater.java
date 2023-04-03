@@ -32,35 +32,8 @@ public class BaseballCalculater {
 				}
 			}
 		}
-		int[] result = {strikeCount, ballCount};
+		int[] result = { strikeCount, ballCount };
 		return result;
-	}
-
-	public static void main(String[] args) {
-		BaseballCalculater calculater = new BaseballCalculater();
-		int[] nums = calculater.getNumbers();
-		for (int i : nums) {
-			System.out.print(i + " ");
-		}
-		System.out.println("");
-		int[] g1 = { 1, 2, 3 };
-		int[] g2 = { 4, 5, 6 };
-		int[] g3 = { 7, 8, 9 };
-		int[] r1 = calculater.checkNumbers(nums, g1);
-		int[] r2 = calculater.checkNumbers(nums, g2);
-		int[] r3 = calculater.checkNumbers(nums, g3);
-		for (int i : r1) {
-			System.out.print(i + " ");
-		}
-		for (int i : r2) {
-			System.out.print(i + " ");
-		}
-		for (int i : r3) {
-			System.out.print(i + " ");
-		}
-		
-		
-
 	}
 
 }

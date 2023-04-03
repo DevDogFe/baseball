@@ -38,7 +38,7 @@ body{
 
 section{
 	padding: 30px;
-	min-height: 800px;
+	width: 1250px;
 }
 .header{
 	margin: 10px;
@@ -82,25 +82,30 @@ section{
 	border-radius: 20px;
 	padding: 20px;
 }
+
+.reply-container :first-child{
+	margin-bottom: 20px;
+}
 .reply-flex-container{
 	display: flex; 
-	justify-content: space-between;
 	margin-top: 5px;
 }
 .reply-flex-container .item1{
-	flex: 1;
+	width: 100px;]
 	min-width: 60px;
 }
 .reply-flex-container .item2{
-	flex: 10;
+	width: 700px;
 }
 .reply-flex-container .item3{
-	flex: 2;
-	text-align: left;
+	width:200px;
 }
 .reply-flex-container .item4{
-	flex: 1;
-	min-width: 250px;
+	width:100px;
+}
+.reply-component{
+	display: flex;
+	justify-content: flex-end;
 }
 a:hover {
 	text-decoration: none;
@@ -111,17 +116,15 @@ a:hover {
 	justify-content: space-between;
 }
 #reply-form :first-child{
-	flex: 1;
-	min-width: 60px;
+	width: 100px;
 }
 
 #reply-form input[type="text"]{
-	flex: 10;
-	margin-left: 20px;
+	width:750px;
 }
 
 #reply-form :last-child{
-	flex: 1;
+	width:100px;
 }
 
 </style>
@@ -164,11 +167,13 @@ a:hover {
 				<div class="reply-flex-container">
 					<div class="reply-items item1">${reply.username}</div>
 					<div class="reply-items item2">${reply.content}</div>
-					<div class="reply-items item3">${reply.createTime}</div>
+					<div class="reply-items reply-component">
+					<div class="item3">${reply.createTime}</div>
 					<c:set value="${reply.userId}" var="replyUserId"></c:set>
 					<%if("admin".equals(userRole) || userId == Integer.parseInt(pageContext.getAttribute("replyUserId").toString()) ){ %>
-					<div class="reply-items item4"><button = onclick="location.href='replyProc?action=delete&boardId=<%=boardDTO.getId()%>&replyId=${reply.id}'">삭제하기</button> </div>
+					<div class="item4"><button = onclick="location.href='replyProc?action=delete&boardId=<%=boardDTO.getId()%>&replyId=${reply.id}'">삭제하기</button> </div>
 					<%} %>
+					</div>
 				</div>
 			</c:forEach>
 		</div>

@@ -60,12 +60,6 @@ public class MainProc extends HttpServlet {
 			tryCount = dbNums[3];
 			session.setAttribute(tryCount + "", tryCount);
 		}
-		for (int i : dbNums) {
-			System.out.println("dbNums " + i);
-		}
-		for (int i : nums) {
-			System.out.println("Nums " + i);
-		}
 
 		int[] guesses;
 		int[] result;
@@ -74,13 +68,7 @@ public class MainProc extends HttpServlet {
 		guesses[0] = Integer.parseInt(request.getParameter("guess1"));
 		guesses[1] = Integer.parseInt(request.getParameter("guess2"));
 		guesses[2] = Integer.parseInt(request.getParameter("guess3"));
-		for (int i : guesses) {
-			System.out.println("guesses " + i);
-		}
 		result = calculater.checkNumbers(nums, guesses);
-		for (int i : result) {
-			System.out.println("result: " + i);
-		}
 		if (result[0] == 3) {
 			request.setAttribute("point", 11 - tryCount);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("win.jsp");

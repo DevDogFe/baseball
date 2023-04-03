@@ -122,4 +122,31 @@ public class ReplyDAO implements IReplyDAO {
 		
 		return resultCount;
 	}
+	
+	@Override
+	public int replyCount(int boardId) {
+		int replyCount = 0;
+		conn = dbHelper.getConnection();
+		String sql = " SELECT count(*) AS replyCount FROM reply WHERE boardId = ? ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, boardId);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				replyCount = rs.getInt("replyCount");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+				dbHelper.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return replyCount;
+	}
 }

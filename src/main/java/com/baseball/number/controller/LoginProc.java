@@ -8,6 +8,7 @@ import java.nio.file.attribute.UserPrincipalLookupService;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,11 +30,6 @@ public class LoginProc extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.setCharacterEncoding("utf-8");
-//		response.setContentType("text/html");
-//		request.setCharacterEncoding("utf-8");
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-//		dispatcher.forward(request, response);
 		
 	}
 
@@ -43,8 +39,24 @@ public class LoginProc extends HttpServlet {
 		response.setContentType("text/html");
 		String email = request.getParameter("email");
 		String pswd = request.getParameter("pswd");
+		String remember = request.getParameter("remember");
 		UserDTO user = new UserService().loginUserByEmailAndPassword(email, pswd);
-		
+		if("on".equals(remember)) {
+			Cookie cookie = new Cookie("email", email);
+			cookie.setMaxAge(60 * 60 * 24 * 7);
+			response.addCookie(cookie);
+		} else {
+			Cookie[] cookies = request.getCookies();
+			if(cookies != null){
+				for(Cookie c : cookies){
+					if(c.getName().equals("email")){
+						c.setMaxAge(0);
+						response.addCookie(c);
+						break;
+					}
+				}
+			}
+		}
 		
 		if(user != null) {
 			HttpSession session = request.getSession();
@@ -53,12 +65,12 @@ public class LoginProc extends HttpServlet {
 			session.setAttribute("username", user.getUsername());
 			session.setAttribute("userRole", user.getUserRole());
 			
-			System.out.println("로그인성공");
 			response.sendRedirect("/baseball/indexProc");
 			// doGet(request, response);
+		} else if(new UserService().checkEmail(email) < 1){
+			response.getWriter().write("<script> alert('없는 아이디(이메일주소)입니다.'); location.href='login.jsp' </script>");
 		} else {
-			response.getWriter().write("<script> alert('로그인에 실패하였습니다.'); location.href='login.jsp' </script>");
-			System.out.println("로그인실패");
+			response.getWriter().write("<script> alert('비밀번호가 틀렸습니다.'); location.href='login.jsp' </script>");
 		}
 	}
 

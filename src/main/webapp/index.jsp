@@ -47,6 +47,7 @@ a:hover {
 article h1{
 	font-size: 30px;
 	padding: 15px;
+	font-weight: bolder;
 }
 article p {
 	font-size: 20px;

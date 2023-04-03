@@ -38,17 +38,12 @@ public class BoardProc extends HttpServlet {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
 		String action = request.getParameter("action");
-		System.out.println("doget");
-		System.out.println(action);
 		if("prev".equals(action) && page > 0) {
-			System.out.println("prev");
 			page -= 10;
 		}
 		if("next".equals(action) && new BoardService().countBoardPage() - page > 10) {
-			System.out.println("next");
 			page += 10;
 		}
-		System.out.println(page);
 		
 		ArrayList<BoardDTO> boardList = new BoardService().showList(page);
 		request.setAttribute("boardList", boardList);
@@ -63,19 +58,15 @@ public class BoardProc extends HttpServlet {
 		HttpSession session = request.getSession();
 		String action = request.getParameter("action");
 		if("write".equals(action)) {
-			System.out.println(action);
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			int a = new BoardService().writeBoardContent(new BoardDTO(title, content, (int)session.getAttribute("userId")));
-			System.out.println(a+a+a+a+"");
 			doGet(request, response);
 		} else if("update".equals(action)) {
-			System.out.println(action);
 			int boardId = Integer.parseInt(request.getParameter("boardId"));
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			int a = new BoardService().updateBoardContent(new BoardDTO(title, content), boardId);
-			System.out.println(a+a+a+a+"");
 			doGet(request, response);
 		}
 	}

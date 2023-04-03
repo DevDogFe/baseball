@@ -22,7 +22,6 @@ public class ReplyProc extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; utf-8");
-		System.out.println("doget");
 		
 		String action = request.getParameter("action");
 		if("delete".equals(action)) {
@@ -37,7 +36,6 @@ public class ReplyProc extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; utf-8");
-		System.out.println("doPost");
 		String action = request.getParameter("action");
 		System.out.println(action);
 		int boardId = Integer.parseInt(request.getParameter("boardId"));
@@ -46,9 +44,7 @@ public class ReplyProc extends HttpServlet {
 			int userId = Integer.parseInt(request.getParameter("userId"));
 			String replyContent = request.getParameter("reply");
 			ReplyDTO replyDTO = new ReplyDTO(replyContent, userId, boardId);
-			System.out.println(replyContent + " " + userId + " " + boardId);
 			int a = new ReplyService().insertReply(replyDTO);
-			System.out.println(a);
 			response.sendRedirect("readProc?boardId=" + boardId);
 		}
 	}

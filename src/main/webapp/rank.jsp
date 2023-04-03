@@ -51,6 +51,7 @@ article {
 article h1{
 	font-size: 30px;
 	padding: 15px;
+	font-weight: bolder;
 }
 article p {
 	font-size: 20px;
@@ -76,6 +77,11 @@ aside{
 
 td, th{
 	padding-left: 5px;
+	font-size: 17px;
+	text-align: center;
+}
+
+.table-third {
 }
 button{
 	font-size: 16px;

@@ -8,6 +8,7 @@ public class BoardDTO {
 	private String createTime;
 	private int views;
 	private String username;
+	private int replyCount;
 
 	public int getViews() {
 		return views;
@@ -16,8 +17,6 @@ public class BoardDTO {
 	public void setViews(int views) {
 		this.views = views;
 	}
-	
-	
 
 	// 글 수정용
 	public BoardDTO(String title, String content) {
@@ -53,6 +52,14 @@ public class BoardDTO {
 		this.views = views;
 	}
 	
+	public int getReplyCount() {
+		return replyCount;
+	}
+
+	public void setReplyCount(int replyCount) {
+		this.replyCount = replyCount;
+	}
+
 	public String getUsername() {
 		return username;
 	}

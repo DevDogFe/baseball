@@ -4,13 +4,16 @@ import java.util.ArrayList;
 
 import com.baseball.number.dto.BoardDTO;
 import com.baseball.number.repository.BoardDAO;
+import com.baseball.number.repository.ReplyDAO;
 
 public class BoardService {
 	
 	private BoardDAO boardDAO;
+	private ReplyDAO replyDAO;
 	
 	public BoardService() {
 		boardDAO = new BoardDAO();
+		replyDAO = new ReplyDAO();
 	}
 	
 	public int writeBoardContent(BoardDTO boardDTO) {
@@ -22,6 +25,9 @@ public class BoardService {
 	public ArrayList<BoardDTO> showList(int page) {
 		ArrayList<BoardDTO> list = new ArrayList<>();
 		list = boardDAO.selectList(page);
+		for(int i = 0; i < list.size(); i++) {
+			list.get(i).setReplyCount(replyDAO.replyCount(list.get(i).getId()));
+		}
 		return list;
 	}
 	

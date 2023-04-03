@@ -14,5 +14,5 @@ public interface IReplyDAO {
 	int delete(int replyId);
 	// 수정
 	int update(String content, int replyId);
-	
+	int replyCount(int boardId);
 }

@@ -45,6 +45,11 @@ public class JoinProc extends HttpServlet {
 		String username = request.getParameter("username");
 		String pswd = request.getParameter("pswd");
 		String pswdCheck = request.getParameter("pswdCheck");
+		if(new UserService().checkEmail(email) == 1) {
+			response.getWriter().write("<script>alert('이미 존재하는 이메일입니다.'); location.href='join.jsp'</script>");
+		} else if(new UserService().checkUsername(username) == 1) {
+			response.getWriter().write("<script>alert('이미 존재하는 닉네임입니다.'); location.href='join.jsp'</script>");
+		}
 		
 		if(pswd.equals(pswdCheck)) {
 			UserDTO userDTO = new UserDTO(email, pswd, username);
@@ -54,8 +59,8 @@ public class JoinProc extends HttpServlet {
 			} else {
 				response.getWriter().write("<script>alert('회원가입에 실패하였습니다.'); location.href='join.jsp'</script>");
 			}
-			
-				
+		} else {
+			response.getWriter().write("<script>alert('비밀번호와 비밀번호 확인의 값이 같아야합니다.'); location.href='join.jsp'</script>");
 		}
 		
 		
