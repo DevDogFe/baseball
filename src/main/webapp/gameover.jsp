@@ -21,7 +21,10 @@
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
-
+a:hover {
+	text-decoration: none;
+	color: #ddd;
+}
 section{
 	display: flex;
 	flex-direction: column;

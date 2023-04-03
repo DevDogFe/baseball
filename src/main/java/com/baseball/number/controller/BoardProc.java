@@ -29,13 +29,30 @@ public class BoardProc extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; utf-8");
 		HttpSession session = request.getSession();
+		int page = 0;
 		if(session.getAttribute("userId") != null) {
 			UserDTO userDTO = new UserService().selectUsersPointByUserId((int)session.getAttribute("userId"));
 			request.setAttribute("userDTO", userDTO);
 		}
-		ArrayList<BoardDTO> boardList = new BoardService().showList(0);
-		request.setAttribute("boardList", boardList);
+		if(request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+		String action = request.getParameter("action");
+		System.out.println("doget");
+		System.out.println(action);
+		if("prev".equals(action) && page > 0) {
+			System.out.println("prev");
+			page -= 10;
+		}
+		if("next".equals(action) && new BoardService().countBoardPage() - page > 10) {
+			System.out.println("next");
+			page += 10;
+		}
+		System.out.println(page);
 		
+		ArrayList<BoardDTO> boardList = new BoardService().showList(page);
+		request.setAttribute("boardList", boardList);
+		request.setAttribute("page", page);
 		request.getRequestDispatcher("freeBoard.jsp").forward(request, response);
 	}
 
@@ -50,6 +67,14 @@ public class BoardProc extends HttpServlet {
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			int a = new BoardService().writeBoardContent(new BoardDTO(title, content, (int)session.getAttribute("userId")));
+			System.out.println(a+a+a+a+"");
+			doGet(request, response);
+		} else if("update".equals(action)) {
+			System.out.println(action);
+			int boardId = Integer.parseInt(request.getParameter("boardId"));
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			int a = new BoardService().updateBoardContent(new BoardDTO(title, content), boardId);
 			System.out.println(a+a+a+a+"");
 			doGet(request, response);
 		}

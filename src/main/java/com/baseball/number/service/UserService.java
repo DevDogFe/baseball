@@ -70,5 +70,12 @@ public class UserService {
 		return resultCount;
 	}
 	
+	public String searchUserById(int userId) {
+		String username = null;
+		username = userDAO.searchUser(userId);
+		return username;
+	}
+	
+
 	
 }

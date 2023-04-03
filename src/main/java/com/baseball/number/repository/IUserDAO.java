@@ -15,5 +15,7 @@ public interface IUserDAO {
 	
 	int searchIdByEmail(String email);
 	
+	String searchUser(int userId);
+	
 	
 }

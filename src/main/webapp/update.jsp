@@ -20,7 +20,10 @@ form {
 	margin-top: 20px;
 	width: 70%;
 }
-
+a:hover {
+	text-decoration: none;
+	color: #ddd;
+}
 
 .form-group{
 	margin-bottom: 30px;

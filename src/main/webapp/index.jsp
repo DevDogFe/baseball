@@ -39,6 +39,11 @@ article {
 	font-weight: bold;
 }
 
+a:hover {
+	text-decoration: none;
+	color: #ddd;
+}
+
 article h1{
 	font-size: 30px;
 	padding: 15px;
@@ -62,6 +67,10 @@ aside{
 
 #information-box{
 	margin-bottom: 30px;
+}
+.rank-container{
+	display: flex;
+	justify-content: center;
 }
 </style>
 
@@ -89,6 +98,7 @@ aside{
 			<%}%>
 			<div>
 				<h1>👑주간 순위👑</h1>
+				<div class="rank-container">
 				<table>
 				<tr>
 					<th>순위</th>
@@ -105,6 +115,7 @@ aside{
 				<c:set var="countWeek" value="${countWeek +1}"/>
 				</c:forEach>
 				</table>
+				</div>
 			</div>
 		</aside>
 	</section>

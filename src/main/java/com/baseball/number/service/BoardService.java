@@ -25,9 +25,12 @@ public class BoardService {
 		return list;
 	}
 	
-	public BoardDTO showBoardContent(int boardId) {
+	public BoardDTO showBoardContent(int boardId, int userId) {
 		BoardDTO boardDTO = null;
 		boardDTO = boardDAO.select(boardId);
+		if(boardDTO.getUserId() != userId) {
+			boardDAO.viewsUp(boardId);
+		}
 		return boardDTO;
 	}
 	
@@ -42,5 +45,14 @@ public class BoardService {
 		resultCount = boardDAO.delete(boardId);
 		return resultCount;
 	}
+	
+	public int countBoardPage() {
+		int boardPageCount = 0;
+		boardPageCount = boardDAO.countBoard();
+		return boardPageCount;
+	}
+	
+
+	
 
 }

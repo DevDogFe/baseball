@@ -11,7 +11,13 @@
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
-
+body{
+	min-width: 700px;
+}
+a:hover {
+	text-decoration: none;
+	color: #ddd;
+}
 section{
 	display: flex;
 	flex-direction: column;
@@ -41,7 +47,7 @@ input[type="submit"]{
 	padding: 5px;
 	border: none;
 	background-color: #645;
-	color: #dfe;
+	color: #fff;
 	border-radius: 5px;
 	
 }
@@ -59,6 +65,7 @@ form *{
 .result-container{
 	display: flex;
 	margin-top: 20px;
+	flex-wrap: wrap;
 }
 label{
 	font-size: 15px;
@@ -71,9 +78,11 @@ textarea{
 	
 	padding: 20px;
 	margin-right: 30px;
+	margin-bottom: 30px;
 	background-color: #edc;
 	border-radius: 10px;
 	font-size: 20px;
+	min-width: 193px;
 }
 
 
@@ -103,8 +112,6 @@ textarea{
 			</div>
 		<%}}%>
 		</div>
-		
-		
 	
 	</section>
 	

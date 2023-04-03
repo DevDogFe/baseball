@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+@import	url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+header {
+	flex: 1;
+	background-color: #7a0929;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	color: #fff;
+}
+
+header h1 a{
+	flex: 1;
+	font-family: 'Nanum Pen Script', cursive;
+	font-size: 40px;
+	padding-left: 30px;
+}
+
+header nav {
+	flex: 2;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+nav ul {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	font-size: 20px;
+	color: #fff;
+}
+
+a:hover{
+	text-deconration: none;
+	color: #fff;
+}
+
+
+
+#login {
+	background-color: orange;
+	color: black;
+	font-size: 20px;
+	font-weight: bold;
+	width: 100px;
+	height: 50px;
+	cursor: pointer;
+	border: 2px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+}
+#login:hover{
+	background-color: #b77c00;
+}
+
+
+
+footer {
+	flex: 1;
+	text-align: center;
+	background-color: #7a0929;
+	padding: 20px;
+	color: #fff;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 16px;
+}

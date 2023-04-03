@@ -2,6 +2,7 @@ package com.baseball.number.dto;
 
 public class ReplyDTO {
 	private int id;
+	private String username;
 	private String content;
 	private int userId;
 	private int boardId;
@@ -16,13 +17,24 @@ public class ReplyDTO {
 	}
 	
 	// 조회용
-	public ReplyDTO(int id, String content, int userId, int boardId, String createTime) {
+	public ReplyDTO(int id, String username, String content, int userId, int boardId, String createTime) {
 		super();
 		this.id = id;
+		this.username = username;
 		this.content = content;
 		this.userId = userId;
 		this.boardId = boardId;
 		this.createTime = createTime;
+	}
+	
+	
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public int getId() {

@@ -22,15 +22,22 @@
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
-
+body{
+	min-width:1300px;
+}
+a:hover {
+	text-decoration: none;
+	color: #ddd;
+}
 section{
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
+	flex: 10;
 	
 }
 article {
-	flex: 5;
+	flex: 4;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
@@ -51,10 +58,16 @@ article p {
 }
 
 aside{
-	flex: 2;
+	height: 100%;
+	flex: 3;
 	background-color: #ddd;
 	text-align: center;
 	padding: 20px;
+	
+	display: flex;
+	
+	flex-direction: column;
+	align-items: center;
 }
 
 #information-box{
@@ -63,6 +76,9 @@ aside{
 
 td, th{
 	padding-left: 5px;
+}
+button{
+	font-size: 16px;
 }
 </style>
 
@@ -132,7 +148,7 @@ td, th{
 			</div>
 			<%} else{%>
 			<div id="information-box">
-				<h4><%=username%>님 환영합니다. <button onclick="location.href='update.jsp'">정보수정</button></h4>
+				<h4><%=username%>님 환영합니다.<br> <button onclick="location.href='update.jsp'">정보수정</button></h4>
 				<p>주간 포인트: <%=userDTO.getWeekPoint() %></p>
 				<p>포인트: <%=userDTO.getTotalPoint() %></p>
 			</div>

@@ -48,7 +48,10 @@ p {
 	font-size: 20px;
 	padding: 10px;	
 }
-
+a:hover {
+	text-decoration: none;
+	color: #ddd;
+}
 aside{
 	flex: 2;
 	background-color: #ddd;

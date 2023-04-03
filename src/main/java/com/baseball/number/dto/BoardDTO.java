@@ -7,6 +7,7 @@ public class BoardDTO {
 	private int userId;
 	private String createTime;
 	private int views;
+	private String username;
 
 	public int getViews() {
 		return views;
@@ -34,11 +35,12 @@ public class BoardDTO {
 	}
 
 	// 목록조회용
-	public BoardDTO(int id, String title, int userId, int views) {
+	public BoardDTO(int id, String title, int userId, int views, String username) {
 		this.id = id;
 		this.title = title;
 		this.userId = userId;
 		this.views = views;
+		this.username = username;
 	}
 
 	// 글 조회용
@@ -49,6 +51,14 @@ public class BoardDTO {
 		this.userId = userId;
 		this.createTime = createTime;
 		this.views = views;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public int getId() {

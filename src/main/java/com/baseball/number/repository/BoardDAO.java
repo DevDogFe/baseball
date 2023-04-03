@@ -54,7 +54,7 @@ public class BoardDAO implements IBoardDAO{
 	public ArrayList<BoardDTO> selectList(int page) {
 		ArrayList<BoardDTO> list = new ArrayList<>();
 		conn = dbHelper.getConnection();
-		String sql = " SELECT b.id, b.title, b.views, u.id AS userId "
+		String sql = " SELECT b.id, b.title, b.views, b.userId, u.username "
 				+ " FROM board AS b LEFT JOIN users AS u ON b.userId = u.id "
 				+ " ORDER BY id DESC LIMIT ?, 10 ";
 		try {
@@ -62,7 +62,7 @@ public class BoardDAO implements IBoardDAO{
 			pstmt.setInt(1, page);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				list.add(new BoardDTO(rs.getInt("id"), rs.getString("title"), rs.getInt("userId"), rs.getInt("views")));
+				list.add(new BoardDTO(rs.getInt("id"), rs.getString("title"), rs.getInt("userId"), rs.getInt("views"), rs.getString("username")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -157,6 +157,55 @@ public class BoardDAO implements IBoardDAO{
 				e.printStackTrace();
 			}
 		}
+		return resultCount;
+	}
+	
+	@Override
+	public int countBoard() {
+		int boardCount = 0;
+		conn = dbHelper.getConnection();
+		String sql = " SELECT count(*) AS boardCount from board ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				boardCount = rs.getInt("boardCount");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				dbHelper.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return boardCount;
+	}
+	
+	@Override
+	public int viewsUp(int boardId) {
+		int resultCount = 0;
+		String queryStr = " UPDATE board SET views = views + 1 WHERE id = ? ";
+		conn = dbHelper.getConnection();
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(queryStr);
+			pstmt.setInt(1, boardId);
+			resultCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				dbHelper.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		return resultCount;
 	}
 

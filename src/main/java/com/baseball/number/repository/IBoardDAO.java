@@ -16,6 +16,10 @@ public interface IBoardDAO {
 	int update(BoardDTO boardDTO, int boardId);
 	// 글 삭제
 	int delete(int boardId);
+	// 글 목록 전체 갯수 카운트
+	int countBoard();
+	// 조회수++
+	int viewsUp(int boardId);
 	
 	
 	

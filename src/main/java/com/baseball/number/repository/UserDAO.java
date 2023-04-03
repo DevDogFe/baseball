@@ -156,5 +156,32 @@ public class UserDAO implements IUserDAO{
 		return userId;
 	}
 	
+	@Override
+	public String searchUser(int userId) {
+		String username = null;
+		conn = dbHelper.getConnection();
+		String sql = " SELECT username FROM users "
+				+ " WHERE id = ? ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userId);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				username = rs.getString("username");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				dbHelper.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return username;
+	}
+	
 
 }

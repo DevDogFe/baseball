@@ -14,6 +14,7 @@
 	 	userRole = (String)session.getAttribute("userRole");
  	}
  	UserDTO userDTO = (UserDTO)request.getAttribute("userDTO");
+ 	int pageCount = (int)request.getAttribute("page");
  %>
     
 <jsp:include page="/layout/header.jsp"/>
@@ -23,7 +24,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
 
-
+a:hover {
+	text-decoration: none;
+	color: #ddd;
+}
 section{
 	display: flex;
 	flex: 10;
@@ -48,7 +52,7 @@ article h1{
 
 .board-container{
 	display: flex; 
-	width: 1000px;
+	min-width: 1000px;
 	
 }
 
@@ -65,6 +69,8 @@ article h1{
 }
 .item2{
 	flex: 10;
+	text-align: left;
+	padding-left: 30px;
 }
 .item3{
 	flex: 1;
@@ -92,6 +98,11 @@ aside{
 #information-box{
 	margin-bottom: 30px;
 }
+
+.buttons-container{
+	display: flex;
+	justify-content: space-between;
+}
 </style>
 
 	<section>
@@ -109,14 +120,18 @@ aside{
 					<div class="board-items item1">${board.id}</div>
 					<div class="board-items item2 title" onclick="location.href='readProc?boardId=${board.id}'">${board.title}</div>
 					<div class="board-items item3">${board.views}</div>
-					<div class="board-items item4">${board.userId}</div>
+					<div class="board-items item4">${board.username}</div>
 				</div>
 				</c:forEach>
+			<div class="buttons-container">
+				<div class="buttons-items">
+					<button onclick="location.href='boardProc?action=prev&page=<%=pageCount%>'">이전 글</button>
+					<button onclick="location.href='boardProc?action=next&page=<%=pageCount%>'">다음 글</button>
+				</div>
+				<div class="buttons-items">
+					<button onclick="location.href='writingBoard.jsp'">글쓰기</button>
+				</div>
 			</div>
-			<div>
-				<a href="writingBoard.jsp">글쓰기</a>
-				<button>이전 글</button>
-				<button>다음 글</button>
 			</div>
 		</article>
 		<aside>

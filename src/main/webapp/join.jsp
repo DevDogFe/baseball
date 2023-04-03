@@ -8,7 +8,10 @@
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
+a:hover {
+	text-decoration: none;
+	color: #ddd;
+}
 section{
 	padding: 60px;
 	font-family: 'Noto Sans KR', sans-serif;

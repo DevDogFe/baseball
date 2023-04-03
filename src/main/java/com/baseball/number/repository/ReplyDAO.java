@@ -50,13 +50,15 @@ public class ReplyDAO implements IReplyDAO {
 	public ArrayList<ReplyDTO> select(int boardId) {
 		ArrayList<ReplyDTO> list = new ArrayList<>();
 		conn = dbHelper.getConnection();
-		String sql = " SELECT * FROM reply WHERE boardId = ? ";
+		String sql = " SELECT r.id, r.content, r.userId, u.username, r.boardId, r.createTime FROM reply AS r "
+				+ "LEFT JOIN users AS u ON r.userId = u.id WHERE boardId = ?; ";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, boardId);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				list.add(new ReplyDTO(rs.getInt("id"), rs.getString("content"), rs.getInt("userId"), rs.getInt("boardId"), rs.getString("createTime")));
+				list.add(new ReplyDTO(rs.getInt("id"), rs.getString("username"), rs.getString("content"), rs.getInt("userId"), rs.getInt("boardId"), rs.getString("createTime")));
+				System.out.println(rs.getString("username"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
