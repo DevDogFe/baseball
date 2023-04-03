@@ -26,7 +26,7 @@
 		</div>
 		<%} else {%>
 		<div>
-			<div id="login" onclick="location.href='login.jsp;'">Login</div>
+			<div id="login" onclick="location.href='login.jsp'">Login</div>
 		</div>
 		<%} %>
 	</header>

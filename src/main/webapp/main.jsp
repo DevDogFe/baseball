@@ -31,7 +31,7 @@ section h1{
 	font-size: 30px;
 }
 
-p {
+section p {
 	font-size: 20px;
 	padding: 10px;	
 }
