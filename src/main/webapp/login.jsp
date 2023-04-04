@@ -134,9 +134,4 @@ footer {
 		</form>
 		<div></div>
 	</section>
-	<footer>
-		<p>email: jhkim900726@gmail.com</p>
-		@Copyright 같은건 없음
-	</footer>
-</body>
-</html>
+	<jsp:include page="/layout/footer.jsp" />
