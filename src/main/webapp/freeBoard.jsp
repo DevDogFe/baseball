@@ -129,7 +129,7 @@ aside{
 					<button onclick="location.href='boardProc?action=next&page=<%=pageCount%>'">다음 글</button>
 				</div>
 				<div class="buttons-items">
-					<button onclick="location.href='writingBoard.jsp'">글쓰기</button>
+					<button onclick="location.href='write'">글쓰기</button>
 				</div>
 			</div>
 			</div>
@@ -141,7 +141,7 @@ aside{
 			</div>
 			<%} else{%>
 			<div id="information-box">
-				<h4><%=username%>님 환영합니다. <button onclick="location.href='update.jsp'">정보수정</button></h4>
+				<h4><%=username%>님 환영합니다. <button onclick="location.href='updateProc'">정보수정</button></h4>
 				<p>주간 포인트: <%=userDTO.getWeekPoint() %></p>
 				<p>포인트: <%=userDTO.getTotalPoint() %></p>
 			</div>

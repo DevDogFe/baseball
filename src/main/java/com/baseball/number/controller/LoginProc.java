@@ -21,7 +21,7 @@ import com.baseball.number.service.UserService;
 /**
  * Servlet implementation class LoginProc
  */
-@WebServlet("/LoginProc")
+@WebServlet("/loginProc")
 public class LoginProc extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,7 +30,10 @@ public class LoginProc extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; utf-8");
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

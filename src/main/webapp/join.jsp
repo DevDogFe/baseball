@@ -31,7 +31,7 @@ form {
 
 <section>
 	<h1>회 원 가 입</h1>
-	<form action="JoinProc" class="was-validated" method="post">
+	<form action="joinProc" class="was-validated" method="post">
 		<div class="form-group">
 			<label for="uname">Email address * (이메일은 아이디로 사용됩니다.)</label> <input type="email"
 				class="form-control" id="email" placeholder="Enter email"

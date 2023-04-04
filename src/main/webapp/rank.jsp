@@ -154,7 +154,7 @@ button{
 			</div>
 			<%} else{%>
 			<div id="information-box">
-				<h4><%=username%>님 환영합니다.<br> <button onclick="location.href='update.jsp'">정보수정</button></h4>
+				<h4><%=username%>님 환영합니다.<br> <button onclick="location.href='updateProc'">정보수정</button></h4>
 				<p>주간 포인트: <%=userDTO.getWeekPoint() %></p>
 				<p>포인트: <%=userDTO.getTotalPoint() %></p>
 			</div>

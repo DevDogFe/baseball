@@ -16,7 +16,7 @@ import com.baseball.number.service.MainService;
 import com.baseball.number.service.UserService;
 import com.baseball.number.utils.BaseballCalculater;
 
-@WebServlet("/MainProc")
+@WebServlet("/mainProc")
 public class MainProc extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -39,6 +39,18 @@ public class MainProc extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; utf-8");
 		response.setCharacterEncoding("utf-8");
+		int[] guesses;
+		int[] result;
+		BaseballCalculater calculater = new BaseballCalculater();
+		guesses = new int[3];
+		guesses[0] = Integer.parseInt(request.getParameter("guess1"));
+		guesses[1] = Integer.parseInt(request.getParameter("guess2"));
+		guesses[2] = Integer.parseInt(request.getParameter("guess3"));
+		System.out.println(guesses[0] + "/" + guesses[1] + "/" + guesses[2] + "/");
+		if(guesses[0] == guesses[1] || guesses[0] == guesses[2] || guesses[1] == guesses[2]) {
+			System.out.println("11111111111");
+			response.getWriter().write("<script>alert('같은 숫자를 사용할 수 없습니다.'); location.href='.jsp'</script>");
+		}
 
 		HttpSession session = request.getSession();
 		int userId = (int) session.getAttribute("userId");
@@ -61,13 +73,6 @@ public class MainProc extends HttpServlet {
 			session.setAttribute(tryCount + "", tryCount);
 		}
 
-		int[] guesses;
-		int[] result;
-		BaseballCalculater calculater = new BaseballCalculater();
-		guesses = new int[3];
-		guesses[0] = Integer.parseInt(request.getParameter("guess1"));
-		guesses[1] = Integer.parseInt(request.getParameter("guess2"));
-		guesses[2] = Integer.parseInt(request.getParameter("guess3"));
 		result = calculater.checkNumbers(nums, guesses);
 		if (result[0] == 3) {
 			request.setAttribute("point", 11 - tryCount);
@@ -88,4 +93,4 @@ public class MainProc extends HttpServlet {
 
 	}
 
-}
+} // end of class

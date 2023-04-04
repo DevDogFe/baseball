@@ -113,7 +113,7 @@ footer {
 	</header>
 	<section>
 		<div></div>
-		<form action="/baseball/LoginProc" method="post">
+		<form action="/baseball/loginProc" method="post">
 			<div class="form-group">
 				<label for="email">Email address</label> <input type="email"
 					class="form-control" placeholder="Enter email" id="email" name="email" value="<%=userEmail%>">
@@ -129,7 +129,7 @@ footer {
 			</div>
 			<div class="button-box">
 			<button type="submit" class="btn btn-secondary">로그인</button>
-			<button type="button" class="btn btn-secondary" onclick="location.href='join.jsp'">회원가입</button>
+			<button type="button" class="btn btn-secondary" onclick="location.href='joinProc'">회원가입</button>
 			</div>
 		</form>
 		<div></div>
