@@ -47,7 +47,7 @@ a:hover {
 		  </div>
 			<div class="form-group">
 				<label for="comment">내용:</label>
-				<textarea class="form-control" rows="20" id="comment" name="content" value="<%=boardDTO.getContent()%>"></textarea>
+				<textarea class="form-control" rows="20" id="comment" name="content"><%=boardDTO.getContent()%></textarea>
 			</div>
 		  <button type="submit" class="btn btn-primary">수정하기</button>
 		  <button type="reset" class="btn btn-primary">다시 작성</button>
