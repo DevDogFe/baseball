@@ -47,7 +47,7 @@ public class JoinProc extends HttpServlet {
 			UserDTO userDTO = new UserDTO(email, pswd, username);
 			int resultRowCount = new UserService().joinUserByInformation(userDTO);
 			if(resultRowCount == 2) {
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("indexProc");
 			} else {
 				response.getWriter().write("<script>alert('회원가입에 실패하였습니다.'); location.href='join.jsp'</script>");
 			}

@@ -30,33 +30,10 @@ section{
 	flex-direction: column;
 	flex: 10;
 	font-family: 'Noto Sans KR', sans-serif;
-}
-article {
-	flex: 5;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	padding: 20px;
-	font-family: 'Hi Melody', cursive;
-	font-weight: bold;
-}
-
-article h1{
-	font-size: 30px;
-	padding: 15px;
-}
-p {
-	font-size: 20px;
-	padding: 10px;	
-}
-
-aside{
-	flex: 2;
-	background-color: #ddd;
+	padding: 40px;
 	text-align: center;
-	padding: 20px;
 }
+
 </style>
 
 	<section>

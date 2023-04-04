@@ -52,9 +52,9 @@ a:hover {
 			<div class="valid-feedback">Valid.</div>
 		</div>
 		
-		<button type="submit" class="btn btn-primary">수정하기</button>
-		<button type="reset" class="btn btn-primary">다시작성</button>
-		<button type="button" class="btn btn-primary" onclick="location.href='delete'">회원탈퇴</button>
+		<button type="submit" class="btn btn-secondary">수정하기</button>
+		<button type="reset" class="btn btn-secondary">다시작성</button>
+		<button type="button" class="btn btn-secondary" onclick="location.href='delete'">회원탈퇴</button>
 	</form>
 </section>
 
