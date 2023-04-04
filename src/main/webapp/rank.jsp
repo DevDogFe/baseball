@@ -21,7 +21,6 @@
 
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
 body{
 	min-width:1300px;
 }
@@ -44,7 +43,6 @@ article {
 	justify-content: flex-start;
 	align-items: center;
 	padding: 20px;
-	font-family: 'Hi Melody', cursive;
 	font-weight: bold;
 }
 
@@ -85,6 +83,21 @@ td, th{
 }
 button{
 	font-size: 16px;
+	padding:5px;
+	margin-top:5px;
+}
+
+#week-button{
+	margin:20px;
+}
+#month-button{
+	margin:20px;
+}
+
+input[type="submit"]{
+	padding: 5px;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+	border-radius: none;
 }
 </style>
 
@@ -162,10 +175,10 @@ button{
 			<%if("admin".equals((String)session.getAttribute("userRole"))){ %>
 			<div>
 				<form action="rank?action=weekUpdate" method="post">
-					<input type="submit" value="주간 포인트 초기화">
+					<input type="submit" value="주간 포인트 초기화" id="week-button">
 				</form>
 				<form action="rank?action=monthUpdate" method="post">
-					<input type="submit" value="월간 포인트 초기화">
+					<input type="submit" value="월간 포인트 초기화" id="month-button">
 				</form>
 			</div>
 			<%}%>

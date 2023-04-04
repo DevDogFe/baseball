@@ -13,6 +13,7 @@ body {
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 header {

@@ -35,7 +35,6 @@ article {
 	flex-direction: column;
 	justify-content: center;
 	padding: 20px;
-	font-family: 'Hi Melody', cursive;
 	font-weight: bold;
 }
 
@@ -65,6 +64,11 @@ aside{
 	flex-direction: column;
 	align-items: center;
 }
+button{
+	font-size: 16px;
+	padding:5px;
+	margin-top:5px;
+}
 
 #information-box{
 	margin-bottom: 30px;
@@ -92,13 +96,13 @@ aside{
 			</div>
 			<%} else{%>
 			<div id="information-box">
-				<h4><%=username%>님 환영합니다. <button onclick="location.href='updateProc'">정보수정</button></h4>
+				<h4><%=username%>님 환영합니다. <br><button onclick="location.href='updateProc'">정보수정</button></h4>
 				<p>주간 포인트: <%=userDTO.getWeekPoint() %></p>
 				<p>포인트: <%=userDTO.getTotalPoint() %></p>
 			</div>
 			<%}%>
 			<div>
-				<h1>👑주간 순위👑</h1>
+				<h2>👑주간 순위👑</h2>
 				<div class="rank-container">
 				<table>
 				<tr>

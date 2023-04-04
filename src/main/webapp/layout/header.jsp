@@ -15,7 +15,7 @@
 		<h1><a href="indexProc">숫 자 야 구</a></h1>
 		<nav>
 			<ul>
-				<li><a href="game">게임하기</a></li>
+				<li><a href="mainProc">게임하기</a></li>
 				<li><a href="boardProc">자유게시판</a></li>
 				<li><a href="rank">전체 랭킹 보기</a></li>
 			</ul>

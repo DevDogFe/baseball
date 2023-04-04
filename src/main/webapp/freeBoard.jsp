@@ -41,8 +41,6 @@ article {
 	flex-direction: column;
 	justify-content: flex-start;
 	padding: 20px;
-	font-family: 'Hi Melody', cursive;
-	font-weight: bold;
 }
 
 article h1{
@@ -55,7 +53,14 @@ article h1{
 	min-width: 1000px;
 	
 }
-
+.board-head{
+	background-color: #543;
+	text-align: center;
+	padding: 5px;
+	border-radius: 5px;
+	margin: 3px;
+	color: #def;
+}
 .board-items{
 	background-color: #345;
 	text-align: center;
@@ -64,6 +69,7 @@ article h1{
 	margin: 3px;
 	color: #def;
 }
+
 .item1{
 	flex: 1;
 }
@@ -99,9 +105,20 @@ aside{
 	margin-bottom: 30px;
 }
 
+button{
+	font-size: 16px;
+	padding:5px;
+	margin-top:5px;
+}
+
+.prev{
+	margin-right: 10px;
+}
+
 .buttons-container{
 	display: flex;
 	justify-content: space-between;
+	padding:5px;
 }
 </style>
 
@@ -110,10 +127,10 @@ aside{
 			<h1>📌게시판📌</h1>
 			<div class=board-background>
 				<div class="board-container">
-					<div class="board-items item1">번호</div>
-					<div class="board-items item2">제 목</div>
-					<div class="board-items item3">조회수</div>
-					<div class="board-items item4">글쓴이</div>
+					<div class="board-head item1">번호</div>
+					<div class="board-head item2">제 목</div>
+					<div class="board-head item3">조회수</div>
+					<div class="board-head item4">글쓴이</div>
 				</div>
 				<c:forEach var="board" items="${boardList}">
 				<div class="board-container">
@@ -125,7 +142,7 @@ aside{
 				</c:forEach>
 			<div class="buttons-container">
 				<div class="buttons-items">
-					<button onclick="location.href='boardProc?action=prev&page=<%=pageCount%>'">이전 글</button>
+					<button class="prev" onclick="location.href='boardProc?action=prev&page=<%=pageCount%>'">이전 글</button>
 					<button onclick="location.href='boardProc?action=next&page=<%=pageCount%>'">다음 글</button>
 				</div>
 				<div class="buttons-items">
@@ -141,7 +158,7 @@ aside{
 			</div>
 			<%} else{%>
 			<div id="information-box">
-				<h4><%=username%>님 환영합니다. <button onclick="location.href='updateProc'">정보수정</button></h4>
+				<h4><%=username%>님 환영합니다.<br> <button onclick="location.href='updateProc'">정보수정</button></h4>
 				<p>주간 포인트: <%=userDTO.getWeekPoint() %></p>
 				<p>포인트: <%=userDTO.getTotalPoint() %></p>
 			</div>
