@@ -6,8 +6,8 @@ public class BaseballCalculater {
 	public BaseballCalculater() {
 		while ((nums[0] == nums[1]) || (nums[0] == nums[2]) || (nums[1] == nums[2])) {
 			nums[0] = (int) (Math.random() * 9) + 1;
-			nums[1] = (int) (Math.random() * 9) + 1;
-			nums[2] = (int) (Math.random() * 9) + 1;
+			nums[1] = (int) (Math.random() * 10);
+			nums[2] = (int) (Math.random() * 10);
 		}
 	}
 

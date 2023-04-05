@@ -91,11 +91,11 @@ textarea{
 	<section>
 		<div class="form-container">
 			<h1>숫자야구 게임</h1>
-			<p>1 ~ 9의 숫자를 3개 입력해주세요</p>
+			<p>0 ~ 9의 숫자를 3개 입력해주세요(첫번째 숫자는 0 불가)</p>
 			<form action="mainProc" method="post">
 					<input type="number" name="guess1" required="required" min="1" max="9"> 
-					<input type="number" name="guess2" required="required" min="1" max="9"> 
-					<input type="number" name="guess3" required="required" min="1" max="9"> 
+					<input type="number" name="guess2" required="required" min="0" max="9"> 
+					<input type="number" name="guess3" required="required" min="0" max="9"> 
 					<input type="submit" value="확인하기"><br>
 					<label>메모장</label><br>
 					<textarea name="memo" rows="7" cols="50"></textarea>

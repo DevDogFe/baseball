@@ -18,6 +18,7 @@
 		request.setAttribute("userDTO", userDTO);
  	}
  	
+ 	
  %>
     
 <jsp:include page="/layout/header.jsp"/>
@@ -86,7 +87,7 @@ button{
 	<section>
 		<article>
 			<h1>⚾ 숫자야구 규칙 ⚾</h1>
-			<p>1.숫자는 1부터 9까지 사용한다.</p>
+			<p>1.숫자는 0부터 9까지 사용한다.(단, 첫번째 숫자는 0이 들어가지 않는다.)</p>
 			<p>2.정해진 3개의 중복되지 않은 숫자를 맞추는 게임이다.</p>
 			<p>3.숫자를 3개씩 제시하여 값을 받아 판단한다.</p>
 			<p>4.숫자는 맞지만 위치가 틀렸을 때는 볼(B)로 표시된다.</p>
