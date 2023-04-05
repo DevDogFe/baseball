@@ -1,3 +1,4 @@
+<%@page import="com.baseball.number.service.UserService"%>
 <%@page import="com.baseball.number.dto.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -7,13 +8,16 @@
  	String email = "";
  	String username = "";
  	String userRole = "";
+ 	UserDTO userDTO = null;
  	if(session.getAttribute("userId") != null){
 	 	userId = (int)session.getAttribute("userId");
 	 	email = (String)session.getAttribute("email");
 	 	username = (String)session.getAttribute("username");
 	 	userRole = (String)session.getAttribute("userRole");
+	 	userDTO = new UserService().selectUsersPointByUserId((int)session.getAttribute("userId"));
+		request.setAttribute("userDTO", userDTO);
  	}
- 	UserDTO userDTO = (UserDTO)request.getAttribute("userDTO");
+ 	
  %>
     
 <jsp:include page="/layout/header.jsp"/>

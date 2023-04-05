@@ -25,6 +25,7 @@ public class IndexProc extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; utf-8");
+		
 		HttpSession session = request.getSession();
 		if(session.getAttribute("userId") != null) {
 			UserDTO userDTO = new UserService().selectUsersPointByUserId((int)session.getAttribute("userId"));

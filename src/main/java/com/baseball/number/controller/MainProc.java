@@ -46,9 +46,7 @@ public class MainProc extends HttpServlet {
 		guesses[0] = Integer.parseInt(request.getParameter("guess1"));
 		guesses[1] = Integer.parseInt(request.getParameter("guess2"));
 		guesses[2] = Integer.parseInt(request.getParameter("guess3"));
-		if(guesses[0] == guesses[1] || guesses[0] == guesses[2] || guesses[1] == guesses[2]) {
-			response.getWriter().write("<script>alert('같은 숫자를 사용할 수 없습니다.'); location.href='.jsp'</script>");
-		}
+		
 
 		HttpSession session = request.getSession();
 		int userId = (int) session.getAttribute("userId");
