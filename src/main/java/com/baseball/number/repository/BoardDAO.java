@@ -26,8 +26,8 @@ public class BoardDAO implements IBoardDAO{
 	@Override // 글 작성
 	public int insert(BoardDTO boardDTO) {
 		int resultCount = 0;
-		String queryStr = " INSERT INTO board (title, content, userId) VALUES "
-				+ " (?, ?, ?) ";
+		String queryStr = " INSERT INTO board (title, content, userId, fileName) VALUES "
+				+ " (?, ?, ?, ?) ";
 		conn = dbHelper.getConnection();
 		PreparedStatement pstmt = null;
 		try {
@@ -35,6 +35,7 @@ public class BoardDAO implements IBoardDAO{
 			pstmt.setString(1, boardDTO.getTitle());
 			pstmt.setString(2, boardDTO.getContent());
 			pstmt.setInt(3, boardDTO.getUserId());
+			pstmt.setString(4, boardDTO.getFileName());
 			resultCount = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -95,7 +96,8 @@ public class BoardDAO implements IBoardDAO{
 				String ceateTime = rs.getString("createTime");
 				int userId = rs.getInt("userId");
 				int views = rs.getInt("views");
-				BoardDTO = new BoardDTO(id, title, content, userId, ceateTime, views);
+				String fileName = rs.getString("fileName");
+				BoardDTO = new BoardDTO(id, title, content, userId, ceateTime, views, fileName);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

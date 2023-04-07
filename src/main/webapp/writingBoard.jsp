@@ -38,19 +38,32 @@ a:hover {
 </style>
 
 	<section>
-		<form action="boardProc?action=write" method="post" class="was-validated">
+		<form action="boardProc?action=write" method="post" class="was-validated" enctype="multipart/form-data">
 		  <div class="form-group">
 		    <label for="title">제목:</label>
 		    <input type="text" class="form-control" id="title" placeholder="제목을 입력하세요." name="title" required>
 		    <div class="invalid-feedback">제목을 반드시 입력해야 합니다.</div>
 		  </div>
-			<div class="form-group">
+		  <div class="custom-file mb-3">
+		      <input type="file" class="custom-file-input" id="customFile" name="file" accept="image/*">
+		      <label class="custom-file-label" for="customFile">이미지파일을 선택해주세요.</label>
+		  </div>
+		  <div class="form-group">
 				<label for="comment">내용:</label>
-				<textarea class="form-control" rows="20" id="comment" name="content"></textarea>
-			</div>
+				<textarea class="form-control" rows="20" id="comment" name="content" required></textarea>
+		  </div>
 		  <button type="submit" class="btn btn-primary">글쓰기</button>
 		  <button type="reset" class="btn btn-primary">다시 작성</button>
 		</form>
+		<script>
+			//$: JQuery 시작(=jquery.)
+			$(".custom-file-input").on("change", function() {
+				// val(): value, split(\\): 마지막\뒤의 문자열만 남김, pop(): 띄움
+			  let fileName = $(this).val().split("\\").pop();
+				// siblings("#"): this의 형제중에 #인것, 
+			  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+			});
+		</script>
 		
 	</section>
 	

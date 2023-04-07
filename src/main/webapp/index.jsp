@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.baseball.number.service.UserService"%>
 <%@page import="com.baseball.number.dto.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -17,6 +18,7 @@
 	 	userDTO = new UserService().selectUsersPointByUserId((int)session.getAttribute("userId"));
 		request.setAttribute("userDTO", userDTO);
  	}
+ 	ArrayList<UserDTO> weekList = new UserService().selectAllUsersPoint("weekPoint");
  	
  	
  %>
@@ -83,7 +85,10 @@ button{
 	justify-content: center;
 }
 </style>
-
+<script>
+		alert('지원하지않는 확장자입니다.지원하는 파일: .png, .jpg, .jpeg, .gif');
+		location.href='writingBoard.jsp';
+	</script>
 	<section>
 		<article>
 			<h1>⚾ 숫자야구 규칙 ⚾</h1>
@@ -115,15 +120,14 @@ button{
 					<th>이름</th>
 					<th>포인트</th>
 				</tr>
-				<c:set var="countWeek" value="1"></c:set>
-				<c:forEach var="weekPoint" items="${weekList}" end="10">
+				<%for(int i = 0; i < 10; i++){ %>
 				<tr>
-					<th><c:out value="${countWeek}"/></th>
-					<th>${weekPoint.username}</th>
-					<th>${weekPoint.weekPoint}</th>
+					<th><%=i + 1 %></th>
+					<th><%=weekList.get(i).getUsername() %> </th>
+					<th><%=weekList.get(i).getWeekPoint() %> </th>
 				</tr>
-				<c:set var="countWeek" value="${countWeek +1}"/>
-				</c:forEach>
+				<%} %>
+				
 				</table>
 				</div>
 			</div>

@@ -127,6 +127,10 @@ a:hover {
 	width:100px;
 }
 
+img{
+	max-width: 600px;
+}
+
 </style>
 
 	<section>
@@ -141,7 +145,11 @@ a:hover {
 			</div>
 		</div>
 		<div class="content">
+			<%if(boardDTO.getFileName() != null && !"".equals(boardDTO.getFileName())) {%>
+			<img alt="이미지를 표시할 수 없습니다." src="files/<%=boardDTO.getFileName()%>"><br><br>
+			<%} %>
 			<%=boardDTO.getContent().replace("\r\n", "<br>")%>
+			
 		</div>
 		<div class="buttons">
 		<%if(boardDTO.getUserId() == userId){%>

@@ -35,6 +35,7 @@ public class ReadProc extends HttpServlet {
 		if(session.getAttribute("userId") == null) {
 			response.getWriter().write("<script>alert('로그인이 필요합니다.'); location.href='boardProc'</script>");
 		}
+		
 		int userId = (int)session.getAttribute("userId");
 		BoardDTO boardDTO = new BoardService().showBoardContent(boardId, userId);
 		ArrayList<ReplyDTO> replyList = new ReplyDAO().select(boardId);
@@ -50,7 +51,6 @@ public class ReadProc extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; utf-8");
 		String action = request.getParameter("action");
-		System.out.println(action);
 		int boardId = Integer.parseInt(request.getParameter("boardId"));
 
 		if ("delete".equals(action)) {

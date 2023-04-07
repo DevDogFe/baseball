@@ -9,6 +9,15 @@ public class BoardDTO {
 	private int views;
 	private String username;
 	private int replyCount;
+	private String fileName;
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 
 	public int getViews() {
 		return views;
@@ -26,11 +35,12 @@ public class BoardDTO {
 	}
 	
 	// 글 작성용
-	public BoardDTO(String title, String content, int userId) {
+	public BoardDTO(String title, String content, int userId, String fileName) {
 		super();
 		this.title = title;
 		this.content = content;
 		this.userId = userId;
+		this.fileName = fileName;
 	}
 
 	// 목록조회용
@@ -43,13 +53,14 @@ public class BoardDTO {
 	}
 
 	// 글 조회용
-	public BoardDTO(int id, String title, String content, int userId, String createTime, int views) {
+	public BoardDTO(int id, String title, String content, int userId, String createTime, int views, String fileName) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.userId = userId;
 		this.createTime = createTime;
 		this.views = views;
+		this.fileName = fileName;
 	}
 	
 	public int getReplyCount() {

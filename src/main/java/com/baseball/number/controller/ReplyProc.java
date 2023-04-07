@@ -37,7 +37,6 @@ public class ReplyProc extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; utf-8");
 		String action = request.getParameter("action");
-		System.out.println(action);
 		int boardId = Integer.parseInt(request.getParameter("boardId"));
 		
 		if ("reply".equals(action)) {

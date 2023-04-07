@@ -112,7 +112,7 @@ input[type="submit"]{
 				<th>포인트</th>
 			</tr>
 			<c:set var="countWeek" value="1"></c:set>
-			<c:forEach var="weekPoint" items="${weekList}" end="10">
+			<c:forEach var="weekPoint" items="${weekList}">
 			<tr>
 				<th><c:out value="${countWeek}"/></th>
 				<th>${weekPoint.username}</th>
@@ -131,7 +131,7 @@ input[type="submit"]{
 				<th>포인트</th>
 			</tr>
 			<c:set var="countMonth" value="1"></c:set>
-			<c:forEach var="monthPoint" items="${monthList}" end="10">
+			<c:forEach var="monthPoint" items="${monthList}">
 			<tr>
 				<th><c:out value="${countMonth}"/></th>
 				<th>${monthPoint.username}</th>

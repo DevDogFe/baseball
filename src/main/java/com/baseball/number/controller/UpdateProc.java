@@ -44,7 +44,7 @@ public class UpdateProc extends HttpServlet {
 				session.setAttribute("username", username);
 				response.sendRedirect("indexProc");
 			} else {
-				response.getWriter().write("<script>alert('회원정보 수정에 실패하였습니다.'); location.href='join.jsp'</script>");
+				response.getWriter().write("<script>alert('회원정보 수정에 실패하였습니다.'); location.href='join.jsp';</script>");
 			}
 				
 		}

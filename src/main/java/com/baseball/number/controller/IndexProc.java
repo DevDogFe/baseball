@@ -31,8 +31,6 @@ public class IndexProc extends HttpServlet {
 			UserDTO userDTO = new UserService().selectUsersPointByUserId((int)session.getAttribute("userId"));
 			request.setAttribute("userDTO", userDTO);
 		}
-		ArrayList<UserDTO> weekList = new UserService().selectAllUsersPoint("weekPoint");
-		request.setAttribute("weekList", weekList);
 		
 		
 		request.getRequestDispatcher("index.jsp").forward(request, response);

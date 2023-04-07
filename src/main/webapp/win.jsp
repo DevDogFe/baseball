@@ -62,4 +62,6 @@ a:hover {
 	
 	</section>
 	
+	
+	
 <jsp:include page="/layout/footer.jsp"/>
